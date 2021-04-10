@@ -11,7 +11,7 @@ import Home from "../pages/Home";
 import Contact from "../pages/Contact";
 
 // // Error 404
-// import Error404 from "../pages/Error404";
+import Error404 from "../pages/Error404";
 
 const routes = [
     {
@@ -28,10 +28,10 @@ const routes = [
                 path: "/admin/login",
                 component: AdminSignIn,
                 exact: true
+            },
+            {
+                component: Error404
             }
-            // {
-            //     component: Error404
-            // }
         ]
     },
     {
@@ -48,10 +48,10 @@ const routes = [
                 path: "/contact",
                 component: Contact,
                 exact: true
+            },
+            {
+                component: Error404
             }
-            // {
-            //     component: Error404
-            // }
         ]
     }
 ]

@@ -39,12 +39,17 @@ function LoadRoutes({ routes }) {
     
     console.log(routes)
 
-    return routes.map((route, index) => (
-        <Route 
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            component={route.component}
-        />
-    ))
+    return ( 
+        <Switch>
+            {routes.map((route, index) => (
+                <Route 
+                    key={index}
+                    path={route.path}
+                    exact={route.exact}
+                    component={route.component}
+                />
+            ))
+        }
+        </Switch>
+    )
 }
