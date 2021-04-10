@@ -1,5 +1,8 @@
 import React from "react";
-import logo from "./logo.svg";
+import Admin from "./pages/Admin";
+import SignIn from "./pages/Admin/SignIn";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
 
 import "./App.scss";
 
@@ -8,7 +11,11 @@ function App() {
     <div className="app">
       <h1> Web Personal - Client <span>Diego</span></h1>
       <h2>Proyecto</h2>
-      <h3>Instalando react-router-dom, detalles</h3>
+      <h2>Estamos en App.js</h2>
+      <Admin />
+      <SignIn />
+      <Home />
+      <Contact />
     </div>
   )
 }
