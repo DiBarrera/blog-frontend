@@ -16,7 +16,7 @@ import "./App.scss";
 
 function App() {
   return (
-    <div className="app">
+    // <div className="app">
       <Router>
           {/* <Route path="/admin" exact={true} component={AdminHome} /> */}
         <Switch>
@@ -25,14 +25,14 @@ function App() {
           ))}
         </Switch>
       </Router>
-      {/* <h1> Web Personal - Client <span>Diego</span></h1>
-      <h2>Proyecto</h2>
-      <h2>Estamos en App.js</h2>
-      <Admin />
-      <SignIn />
-      <Home />
-      <Contact /> */}
-    </div>
+    //   {/* <h1> Web Personal - Client <span>Diego</span></h1>
+    //   <h2>Proyecto</h2>
+    //   <h2>Estamos en App.js</h2>
+    //   <Admin />
+    //   <SignIn />
+    //   <Home />
+    //   <Contact />
+    // </div> */}
   )
 }
 
@@ -42,7 +42,7 @@ function RouteWithSubRoutes(route) {
     <Route 
       path={route.path}
       exact={route.exact}
-      render={props => <route.component routes={route.routes}/>}
+      render={props => <route.component routes={route.routes} {...props}/>}
     />
   )
 }
