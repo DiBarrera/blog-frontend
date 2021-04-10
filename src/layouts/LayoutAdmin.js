@@ -29,7 +29,7 @@ export default function LayoutAdmin(props) {
                     Header tres puntos ...
                 </Header>
                 <Content>
-                    <div>Abajo esta el Sistema de rutas</div>
+                    <div>Content Abajo esta el Sistema de rutas Admin</div>
                     <LoadRouters routes={routes} />
                     <div>Contenido tres puntos ...</div>
                 </Content>
