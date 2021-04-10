@@ -8,7 +8,7 @@ function App() {
     <div className="app">
       <h1> Web Personal - Client <span>Diego</span></h1>
       <h2>Proyecto</h2>
-      <h3>Instalando react-router-dom</h3>
+      <h3>Instalando react-router-dom, detalles</h3>
     </div>
   )
 }
