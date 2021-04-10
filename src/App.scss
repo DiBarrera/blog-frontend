@@ -1,0 +1,34 @@
+@import "./scss/index.scss";
+
+// .App {
+//     color: red;
+// }
+
+// .app h1 {
+//     color: red;
+// }
+
+// .app h2 {
+//     color: green;
+// }
+
+// .app {
+//     h1 {
+//         color: red;
+
+//         span {
+//             color:blue;
+//             font-weight: 100;
+//         }
+//     }
+
+//     h2 {
+//         color: green;
+//     }
+// }
+
+.app {
+    h1 {
+        color: $primary-color;
+    }
+}
