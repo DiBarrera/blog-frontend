@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Switch,
     Route,
@@ -22,16 +22,21 @@ export default function LayoutAdmin(props) {
     console.log(routes)
 
     const { Header, Content, Footer } = Layout
+    const [menuCollapsed, setMenuCollapsed] = useState(false)
 
     return (
         <Layout>
             {/* TO DO: Menu Sider */}
-            <MenuSider />
-            <h2>Menu Sider Admin</h2>
-            <Layout className="layout-admin">
+            <MenuSider menuCollapsed={menuCollapsed}/>
+
+            <Layout className="layout-admin"
+            style={{ marginLeft: menuCollapsed ? "80px" : "200px" }}>
                 <Header className="layout-admin__header">
                     {/* TO DO: Menu Top */}
-                    <MenuTop />
+                    <MenuTop 
+                        menuCollapsed={menuCollapsed}
+                        setMenuCollapsed={setMenuCollapsed}
+                    />
                     Header tres puntos ...
                 </Header>
                 <Content className="layout-admin__content">

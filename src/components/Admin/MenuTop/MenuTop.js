@@ -5,7 +5,11 @@ import { MenuFoldOutlined, MenuUnfoldOutlined, PoweroffOutlined } from "@ant-des
 
 import "./MenuTop.scss";
 
-export default function MenuTop() {
+export default function MenuTop(props) {
+
+    console.log(props)
+
+    const { menuCollapsed, setMenuCollapsed } = props
 
     return (
         <div className="menu-top">
@@ -15,8 +19,8 @@ export default function MenuTop() {
                     src={Logo}
                     alt="Logo"
                 />
-                <Button type="link" onClick={() => console.log("Click")}>
-                    <MenuUnfoldOutlined />
+                <Button type="link" onClick={() => setMenuCollapsed(!menuCollapsed)}>
+                    {menuCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 </Button>
             </div>
             <div className="menu-top__right">

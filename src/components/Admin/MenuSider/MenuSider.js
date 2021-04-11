@@ -14,11 +14,11 @@ export default function MenuSider(props) {
 
     console.log(props)
 
-    const { menuCollapsed } = props
     const { Sider } = Layout
+    const { menuCollapsed } = props
 
     return (
-        <Sider className="admin-sider">
+        <Sider className="admin-sider" collapsed={menuCollapsed}>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
                 <Menu.Item key="1">
                     <Link to={"/admin"}>
