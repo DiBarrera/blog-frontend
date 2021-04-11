@@ -77,8 +77,62 @@ export default function RegisterForm() {
 
         console.log(inputs)
         // e.preventDefault()
-        console.log(inputs)
         console.log(formValid)
+
+        // const { email, password, repeatPassword, privacyPolicy } = formValid
+        const nombreVal = inputs.nombre
+        const apellidoVal = inputs.apellido
+        const emailVal = inputs.email
+        const passwordVal = inputs.password
+        const repeatPasswordVal = inputs.repeatPassword
+        const privacyPolicyVal = inputs.privacyPolicy
+
+        if(!nombreVal || !apellidoVal || !emailVal || !passwordVal || !repeatPasswordVal || !privacyPolicyVal) {
+            console.log(notification)
+            console.log(`nombre val: ${nombreVal}`)
+            console.log(`apellido val: ${apellidoVal}`)
+            console.log(`email val: ${emailVal}`)
+            console.log(`password val: ${passwordVal}`)
+            console.log(`repeat password val: ${repeatPasswordVal}`)
+            console.log(`privacy policy val: ${privacyPolicyVal}`)
+
+            console.log("Acontinuacion los campos no llenados")
+            console.log(`nombre no val: ${!nombreVal}`)
+            console.log(`apellido no val: ${!apellidoVal}`)
+            console.log(`email no val: ${!emailVal}`)
+            console.log(`password no val: ${!passwordVal}`)
+            console.log(`repeat password no val: ${!repeatPasswordVal}`)
+            console.log(`privacy policy no val: ${!privacyPolicyVal}`)
+            notification["error"]({
+                message: "Todos los campos son obligatorios"
+            })
+        } else {
+            if(passwordVal !== repeatPasswordVal) {
+                console.log(`Las contraseñas no son iguales: ${passwordVal} !=== ${repeatPasswordVal}`)
+                notification["error"]({
+                    message: "Las contraseñas tienen que ser iguales"
+                })
+            } else {
+                // TO DO: Conectar con el API y registrar el usuario
+                console.log("Se llenaron todos los campos pero no se creo usuario...")
+                notification["success"]({
+                    message: "Cuenta creada"
+                })
+                // const result = await signUpApi(inputs)
+                // if(!result.ok) {
+                //     notification["error"]({
+                //         message: result.message
+                //     })
+                // } else {
+                //     console.log(inputs)
+                //     console.log(result)
+                //     notification["success"]({
+                //         message: result.message
+                //     })
+                //     resetForm()
+                // }
+            }
+        }
     }
     
     return (
