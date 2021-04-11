@@ -23,17 +23,19 @@ export default function LayoutAdmin(props) {
 
     return (
         <Layout>
+            {/* TO DO: Menu Sider */}
             <h2>Menu Sider Admin</h2>
-            <Layout>
-                <Header>
+            <Layout className="layout-admin">
+                <Header className="layout-admin__header">
+                    {/* TO DO: Menu Top */}
                     Header tres puntos ...
                 </Header>
-                <Content>
+                <Content className="layout-admin__content">
                     <div>Content Abajo esta el Sistema de rutas Admin</div>
                     <LoadRoutes routes={routes} />
                     <div>Contenido tres puntos ...</div>
                 </Content>
-                <Footer>
+                <Footer className="layout-admin__footer">
                     <div>Footer tres puntos ...</div>
                 </Footer>
             </Layout>
