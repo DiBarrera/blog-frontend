@@ -23,6 +23,14 @@ export default function SignIn() {
                 <h1 className="sign-in__content-logo">
                     <img src={Logo} alt="Logo" />
                 </h1>
+                <div className="sign-in__content-tabs">
+                        <Tabs type="card">
+                            <TabPane tab={<span>Entrar</span>} key="1">
+                            </TabPane>
+                            <TabPane tab={<span>Nuevo usuario</span>} key="2">
+                            </TabPane>
+                        </Tabs>
+                    </div>
             </Content>  
         </Layout>
     )
