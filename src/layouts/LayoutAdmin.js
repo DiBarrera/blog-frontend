@@ -30,7 +30,7 @@ export default function LayoutAdmin(props) {
                 </Header>
                 <Content>
                     <div>Content Abajo esta el Sistema de rutas Admin</div>
-                    <LoadRouters routes={routes} />
+                    <LoadRoutes routes={routes} />
                     <div>Contenido tres puntos ...</div>
                 </Content>
                 <Footer>
@@ -41,7 +41,7 @@ export default function LayoutAdmin(props) {
     )
 }
 
-function LoadRouters({ routes }) {
+function LoadRoutes({ routes }) {
 
     console.log(routes)
 
