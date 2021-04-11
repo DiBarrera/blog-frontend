@@ -7,6 +7,7 @@ import {
     BrowserRouter as Router
   } from "react-router-dom";
 import { Layout } from "antd";
+import MenuTop from "../components/Admin/MenuTop";
 
 import "./LayoutAdmin.scss"
 import routes from "../config/routes";
@@ -28,6 +29,7 @@ export default function LayoutAdmin(props) {
             <Layout className="layout-admin">
                 <Header className="layout-admin__header">
                     {/* TO DO: Menu Top */}
+                    <MenuTop />
                     Header tres puntos ...
                 </Header>
                 <Content className="layout-admin__content">
