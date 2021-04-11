@@ -8,6 +8,7 @@ import {
   } from "react-router-dom";
 import { Layout } from "antd";
 import MenuTop from "../components/Admin/MenuTop";
+import MenuSider from "../components/Admin/MenuSider";
 
 import "./LayoutAdmin.scss"
 import routes from "../config/routes";
@@ -25,6 +26,7 @@ export default function LayoutAdmin(props) {
     return (
         <Layout>
             {/* TO DO: Menu Sider */}
+            <MenuSider />
             <h2>Menu Sider Admin</h2>
             <Layout className="layout-admin">
                 <Header className="layout-admin__header">
