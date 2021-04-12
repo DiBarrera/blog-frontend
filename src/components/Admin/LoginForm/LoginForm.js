@@ -5,8 +5,32 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./LoginForm.scss";
 
 export default function LoginForm() {
+
+    const [inputs, setInputs] = useState({
+        email: "",
+        password: ""
+    })
+
+    const changeForm = (e) => {
+        console.log(e)
+        console.log(e.target)
+        console.log(e.target.value)
+        console.log(e.target.name)
+        console.log(inputs)
+        setInputs({
+            ...inputs,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const login = () => {
+        console.log("Login")
+        console.log(inputs)
+        // e.preventDefault();
+    }
+
     return (
-        <Form className="login-form">
+        <Form className="login-form" onFinish={login} onChange={changeForm}>
             <Form.Item>
                 <Input 
                     prefix={<UserOutlined type="user" style={{ color: "rgba(0, 0, 0, .25)" }} />}
