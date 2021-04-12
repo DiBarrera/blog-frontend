@@ -10,7 +10,7 @@ import { Layout } from "antd";
 import MenuTop from "../components/Admin/MenuTop";
 import MenuSider from "../components/Admin/MenuSider";
 import AdminSignIn from "../pages/Admin/SignIn";
-import { getAccessToken, getRefreshToken } from "../api/auth"
+import { getAccessTokenApi, getRefreshTokenApi } from "../api/auth"
 
 import "./LayoutAdmin.scss"
 import routes from "../config/routes";
@@ -28,16 +28,16 @@ export default function LayoutAdmin(props) {
 
     const user = null
 
-    const accessToken = getAccessToken()
+    const accessToken = getAccessTokenApi()
     console.log(accessToken)
 
-    const refreshToken = getRefreshToken()
+    const refreshToken = getRefreshTokenApi()
     console.log(refreshToken)
 
-    const accessTokenIsEqual = getAccessToken()
+    const accessTokenIsEqual = getAccessTokenApi()
     console.log(`accessToken: + ${accessTokenIsEqual}`)
 
-    const refreshTokenIsEqual = getRefreshToken()
+    const refreshTokenIsEqual = getRefreshTokenApi()
     console.log(`refreshToken: + ${refreshTokenIsEqual}`)
 
     if(!user) {

@@ -2,7 +2,7 @@ import { basePath, apiVersion } from "./config";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../utils/constants";
 import jwtDecode from "jwt-decode";
 
-export function getAccessToken() {
+export function getAccessTokenApi() {
     
     console.log("Toma el Access Token")
 
@@ -17,7 +17,7 @@ export function getAccessToken() {
     return willExpireToken(accessToken) ? null : accessToken
 }
 
-export function getRefreshToken() {
+export function getRefreshTokenApi() {
 
     console.log("Aqui el Refresh Token")
 
@@ -30,6 +30,55 @@ export function getRefreshToken() {
     console.log(refreshToken)
 
     return willExpireToken(refreshToken) ? null : refreshToken
+}
+
+export function refreshAccessToken(refreshToken) {
+
+    const url = `${basePath}/${apiVersion}/refresh-access-token`
+    const bodyObj = {
+        refreshToken: refreshToken
+    }
+
+    const params = {
+        method: "POST",
+        body: JSON.stringify(bodyObj),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+
+    console.log(fetch)
+    console.log(basePath)
+    console.log(apiVersion)
+    console.log(url)
+    console.log(params)
+    console.log(bodyObj)
+
+    fetch(url, params)
+        .then(response => {
+            console.log(response)
+            if(response.status !== 200) {
+                return null
+            }
+            return response.json()
+        })
+        .then(result => {
+            if(!result) {
+                // TO DO: Deslogar usuario
+            } else {
+                console.log(result)
+                console.log(result.accessToken)
+                console.log(result.refreshTken)
+                console.log(ACCESS_TOKEN)
+                console.log(accessToken)
+                console.log(REFRESH_TOKEN)
+                console.log(refreshTken)
+                const { accessToken, refreshTken } = result
+                localStorage.setItem(ACCESS_TOKEN, accessToken)
+                localStorage.setItem(REFRESH_TOKEN, refreshTken)
+            }
+        })
+
 }
 
 export function willExpireToken(token) {
