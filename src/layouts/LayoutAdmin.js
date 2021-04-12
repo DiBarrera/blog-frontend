@@ -34,6 +34,7 @@ export default function LayoutAdmin(props) {
     // const user = null
 
     console.log(user)
+    console.log(isLoading)
 
     const accessToken = getAccessTokenApi()
     console.log(accessToken)
@@ -47,7 +48,7 @@ export default function LayoutAdmin(props) {
     const refreshTokenIsEqual = getRefreshTokenApi()
     console.log(`refreshToken: + ${refreshTokenIsEqual}`)
 
-    if(!user) {
+    if(!user && !isLoading) {
         return (
             <>
                 <Route path="/admin/login" component={AdminSignIn} />
@@ -56,32 +57,36 @@ export default function LayoutAdmin(props) {
         )
     }
 
-    return (
-        <Layout>
-            {/* TO DO: Menu Sider */}
-            <MenuSider menuCollapsed={menuCollapsed}/>
+    if(user && !isLoading) {
+        return (
+            <Layout>
+                {/* TO DO: Menu Sider */}
+                <MenuSider menuCollapsed={menuCollapsed}/>
 
-            <Layout className="layout-admin"
-            style={{ marginLeft: menuCollapsed ? "80px" : "200px" }}>
-                <Header className="layout-admin__header">
-                    {/* TO DO: Menu Top */}
-                    <MenuTop 
-                        menuCollapsed={menuCollapsed}
-                        setMenuCollapsed={setMenuCollapsed}
-                    />
-                    Header tres puntos ...
-                </Header>
-                <Content className="layout-admin__content">
-                    <div>Content Abajo esta el Sistema de rutas Admin</div>
-                    <LoadRoutes routes={routes} />
-                    <div>Contenido tres puntos ...</div>
-                </Content>
-                <Footer className="layout-admin__footer">
-                    <div>Footer tres puntos ...</div>
-                </Footer>
+                <Layout className="layout-admin"
+                style={{ marginLeft: menuCollapsed ? "80px" : "200px" }}>
+                    <Header className="layout-admin__header">
+                        {/* TO DO: Menu Top */}
+                        <MenuTop 
+                            menuCollapsed={menuCollapsed}
+                            setMenuCollapsed={setMenuCollapsed}
+                        />
+                        Header tres puntos ...
+                    </Header>
+                    <Content className="layout-admin__content">
+                        <div>Content Abajo esta el Sistema de rutas Admin</div>
+                        <LoadRoutes routes={routes} />
+                        <div>Contenido tres puntos ...</div>
+                    </Content>
+                    <Footer className="layout-admin__footer">
+                        <div>Footer tres puntos ...</div>
+                    </Footer>
+                </Layout>
             </Layout>
-        </Layout>
-    )
+        )
+    }
+
+    return null
 }
 
 function LoadRoutes({ routes }) {
