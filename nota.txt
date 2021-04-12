@@ -1,0 +1,3 @@
+Estado de activo de usuario:
+Por ahora para activar usuarios solo se usa la base de datos pasando la propiedad de false a true
+Pendiente hacer una funcion para tal efecto
