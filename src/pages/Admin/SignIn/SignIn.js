@@ -9,6 +9,7 @@ import {
   } from "react-router-dom";
   import Logo from "../../../assets/img/png/logo-personal.png";
   import RegisterForm from "../../../components/Admin/RegisterForm";
+  import LoginForm from "../../../components/Admin/LoginForm";
 
 import "./SignIn.scss";
 
@@ -28,6 +29,7 @@ export default function SignIn() {
                         <Tabs type="card">
                             <TabPane tab={<span>Entrar</span>} key="1">
                                 Componente LoginForm
+                                <LoginForm />
                             </TabPane>
                             <TabPane tab={<span>Nuevo usuario</span>} key="2">
                                 Componente RegisterForm
