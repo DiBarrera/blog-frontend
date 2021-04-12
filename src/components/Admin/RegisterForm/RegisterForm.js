@@ -5,6 +5,7 @@ import {
     emailValidation, 
     minLengthValidation 
 } from "../../../utils/formValidation";
+import { signUpApi } from "../../../api/user";
 
 import "./RegisterForm.scss"
 
@@ -114,11 +115,11 @@ export default function RegisterForm() {
                 })
             } else {
                 // TO DO: Conectar con el API y registrar el usuario
-                console.log("Se llenaron todos los campos pero no se creo usuario...")
-                notification["success"]({
-                    message: "Cuenta creada"
-                })
-                // const result = await signUpApi(inputs)
+                // console.log("Se llenaron todos los campos pero no se creo usuario...")
+                // notification["success"]({
+                //     message: "Cuenta creada"
+                // })
+                const result = /* await */ signUpApi(inputs)
                 // if(!result.ok) {
                 //     notification["error"]({
                 //         message: result.message
