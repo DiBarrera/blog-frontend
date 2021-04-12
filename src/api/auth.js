@@ -65,6 +65,7 @@ export function refreshAccessToken(refreshToken) {
         .then(result => {
             if(!result) {
                 // TO DO: Deslogar usuario
+                logout()
             } else {
                 console.log(result)
                 console.log(result.accessToken)
@@ -79,6 +80,11 @@ export function refreshAccessToken(refreshToken) {
             }
         })
 
+}
+
+export function logout() {
+    localStorage.removeItem(ACCESS_TOKEN)
+    localStorage.removeItem(REFRESH_TOKEN)
 }
 
 export function willExpireToken(token) {
