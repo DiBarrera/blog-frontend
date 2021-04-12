@@ -11,6 +11,7 @@ import MenuTop from "../components/Admin/MenuTop";
 import MenuSider from "../components/Admin/MenuSider";
 import AdminSignIn from "../pages/Admin/SignIn";
 import { getAccessTokenApi, getRefreshTokenApi } from "../api/auth"
+import useAuth from "../hooks/useAuth";
 
 import "./LayoutAdmin.scss"
 import routes from "../config/routes";
@@ -23,10 +24,16 @@ export default function LayoutAdmin(props) {
 
     console.log(routes)
 
-    const { Header, Content, Footer } = Layout
     const [menuCollapsed, setMenuCollapsed] = useState(false)
+    const { Header, Content, Footer } = Layout
+    
+    console.log(useAuth())
 
-    const user = null
+    const { user, isLoading } = useAuth()
+
+    // const user = null
+
+    console.log(user)
 
     const accessToken = getAccessTokenApi()
     console.log(accessToken)

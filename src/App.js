@@ -11,20 +11,23 @@ import {
 } from "react-router-dom";
 import routes from "./config/routes";
 import AdminHome from "./pages/Admin";
+import AuthProvider from "./providers/AuthProvider";
 
 import "./App.scss";
 
 function App() {
   return (
     // <div className="app">
-      <Router>
-          {/* <Route path="/admin" exact={true} component={AdminHome} /> */}
-        <Switch>
-          {routes.map((route, index) => (
-          <RouteWithSubRoutes key={index} {...route} />
-          ))}
-        </Switch>
-      </Router>
+      <AuthProvider>
+        <Router>
+            {/* <Route path="/admin" exact={true} component={AdminHome} /> */}
+          <Switch>
+            {routes.map((route, index) => (
+            <RouteWithSubRoutes key={index} {...route} />
+            ))}
+          </Switch>
+        </Router>
+      </AuthProvider>
     //   {/* <h1> Web Personal - Client <span>Diego</span></h1>
     //   <h2>Proyecto</h2>
     //   <h2>Estamos en App.js</h2>
