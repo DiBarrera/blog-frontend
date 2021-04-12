@@ -60,7 +60,6 @@ export function signUpApi(data) {
         });
 }
 
-/*
 export function signInApi(data) {
     const url = `${basePath}/${apiVersion}/sign-in`
     const params = {
@@ -70,10 +69,10 @@ export function signInApi(data) {
             "Content-Type":"application/json"
         }
     }
-            // "Content-Type": "application/json; charset=utf-8",
-            // "Access-Control-Allow-Origin: *": "http://localhost:3000/api",
-            // "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS": "http://localhost:3000/api",
-            // "Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token": "http://localhost:3000/api"
+    //         // "Content-Type": "application/json; charset=utf-8",
+    //         // "Access-Control-Allow-Origin: *": "http://localhost:3000/api",
+    //         // "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS": "http://localhost:3000/api",
+    //         // "Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token": "http://localhost:3000/api"
     console.log(data)
     console.log(fetch)
     console.log(basePath)
@@ -84,11 +83,17 @@ export function signInApi(data) {
 
     return fetch(url, params)
         .then(response => {
+            console.log(data)
+            console.log(fetch)
+            console.log(url)
+            console.log(params)
             console.log(response)
             return response.json()
         })
         .then(result => {
             console.log(result)
+            console.log(result.accessToken)
+            console.log(result.refreshToken)
             return result
         })
         .catch(err => {
@@ -96,4 +101,3 @@ export function signInApi(data) {
             return err.message
         })
 }
-*/
