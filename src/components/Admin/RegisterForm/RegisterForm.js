@@ -74,7 +74,7 @@ export default function RegisterForm() {
         }
     }
 
-    const register = e => {
+    const register = async e => {
 
         console.log(inputs)
         // e.preventDefault()
@@ -119,19 +119,20 @@ export default function RegisterForm() {
                 // notification["success"]({
                 //     message: "Cuenta creada"
                 // })
-                const result = /* await */ signUpApi(inputs)
-                // if(!result.ok) {
-                //     notification["error"]({
-                //         message: result.message
-                //     })
-                // } else {
-                //     console.log(inputs)
-                //     console.log(result)
-                //     notification["success"]({
-                //         message: result.message
-                //     })
-                //     resetForm()
-                // }
+                const result = await signUpApi(inputs)
+                console.log(result)
+                if(!result.ok) {
+                    notification["error"]({
+                        message: result.message
+                    })
+                } else {
+                    console.log(inputs)
+                    console.log(result)
+                    notification["success"]({
+                        message: result.message
+                    })
+                    // resetForm()
+                }
             }
         }
     }

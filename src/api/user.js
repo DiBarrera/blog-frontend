@@ -22,33 +22,42 @@ export function signUpApi(data) {
     console.log(url)
     console.log(params)
 
-    // const myObjStr = JSON.stringify(data)
-    // console.log(myObjStr)
-    // console.log(JSON.parse(myObjStr))
+    const myObjStr = JSON.stringify(data)
+    console.log(myObjStr)
+    console.log(JSON.parse(myObjStr))
 
-    fetch(url, params)
+    return fetch(url, params)
         .then(response => {
             console.log(data)
             console.log(fetch)
             console.log(url)
             console.log(params)
             console.log(response)
-            // return response.json()
+            return response.json()
         })
-    //     .then(result => {
-    //         console.log(result)
-    //         console.log(result.user)
-    //         if (result.user) {
-    //           return { ok: true, message: "Usuario creado correctamente" };
-    //         }
-    //         console.log(result)
-    //         return { ok: false, message: result.message };
-    //         })
-    //       .catch(err => {
-    //         console.log(err)
-    //         console.log(err.message)
-    //         return { ok: false, message: err.message };
-    //         });
+        .then(result => {
+            console.log(result)
+            console.log(result.user)
+            if (result.user) {
+                console.log(`Usuario creado ---> ${result}`)
+                return { 
+                    result,
+                    status: 200,
+                    ok: true, 
+                    message: "Usuario creado correctamente" 
+                    }                
+                }
+                return {
+                    result,
+                    ok: false,
+                    message: result.message
+                }
+        })
+        .catch(err => {
+            console.log(err)
+            console.log(err.message)
+            return { ok: false, message: err.message };
+        });
 }
 
 /*
