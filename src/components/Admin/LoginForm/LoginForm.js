@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Input, Button, notification } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { signInApi } from "../../../api/user";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../utils/constants";
 
 import "./LoginForm.scss";
 
@@ -24,12 +25,34 @@ export default function LoginForm() {
         })
     }
 
-    const login = () => {
+    const login = async e => {
         console.log("Login")
         console.log(inputs)
         // e.preventDefault();
 
         signInApi(inputs)
+
+        const result = await signInApi(inputs)
+
+        console.log(result)
+
+        if(result.message) {
+            console.log(result.message)
+            notification["error"]({
+                message: result.message
+            })
+        } else {
+            console.log(localStorage)
+            const { accessToken, refreshToken } = result
+            localStorage.setItem(ACCESS_TOKEN, accessToken)
+            localStorage.setItem(REFRESH_TOKEN, refreshToken)
+
+            notification["success"]({
+                message: "Login correcto"
+            })
+
+            // window.location.href = "/admin"
+        }
     }
 
     return (
