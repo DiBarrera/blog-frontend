@@ -59,3 +59,5 @@ Sobre EditUserForm.js
 En la function EditForm en linea 73, en el return
 
 Al presionar Edit la información de un Usuario se muestra su información, si se presiona Edit en otro usuario, hay un bug que muestra la misma info del primero presionado
+
+TO DO: Arreglar el bug
