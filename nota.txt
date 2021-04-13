@@ -31,3 +31,23 @@ ReactDOM.render(
 );
 
 La solución puede traer otro tipo de problemas así que a considerar si usar el original o el comentado para los Modals de Antd.
+
+*********************************************************************************
+
+Issue para drag & drop imagenes de resolucion grande con useDropzone y el method createObjectURL
+
+En el archivo EdirUserForm.js en linea 33
+
+El código:
+
+    const onDrop = useCallback(
+        acceptedFiles => {
+            const file = acceptedFiles[0]
+            setAvatar({file, preview: URL.createObjectURL(file)})
+        }, [setAvatar]
+    )
+
+Al parecer al drag & drop una imagen de resolución grande, genera el issue:
+Unhandled Rejection (TypeError): Failed to execute 'createObjectURL' on 'URL': Overload resolution failed.
+
+TO DO: Actualizar a un metodo que no tenga URL.createObjectURL como código deprecado para Google Chrome
