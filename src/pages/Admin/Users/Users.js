@@ -17,11 +17,13 @@ export default function Users() {
     useEffect(() => {
         getUsersActiveApi(token, true).then(response => {
             console.log(response)
-            setUsersActive(response)
+            console.log(response.users)
+            setUsersActive(response.users)
         })
         getUsersActiveApi(token, false).then(response => {
             console.log(response)
-            setUsersInactive(response)
+            console.log(response.users)
+            setUsersInactive(response.users)
         })
     }, [token])
 
