@@ -1,3 +1,33 @@
 Estado de activo de usuario:
 Por ahora para activar usuarios solo se usa la base de datos pasando la propiedad de false a true
-Pendiente hacer una funcion para tal efecto
+Pendiente hacer una funcion para tal efecto.
+
+*********************************************************************************
+
+Issue para uso de Modal.
+El Modal genera el siguiente error:
+Warning: findDOMNode is deprecated in StrictMode. findDOMNode was passed an instance of DomWrapper which is inside StrictMode. Instead, add a ref directly to the element you want to reference. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-find-node
+
+Solución temporal que puede traer otros issuges:
+
+En index.js de client
+
+Código original
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+Comentar las lineas de <React.StrictMode> y la de </React.StrictMode> así:
+
+ReactDOM.render(
+  // <React.StrictMode>
+    <App />,
+  // </React.StrictMode>,
+  document.getElementById('root')
+);
+
+La solución puede traer otro tipo de problemas así que a considerar si usar el original o el comentado para los Modals de Antd.
