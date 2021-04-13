@@ -101,3 +101,34 @@ export function signInApi(data) {
             return err.message
         })
 }
+
+export function getUsersApi(token) {
+
+    const url = `${basePath}/${apiVersion}/users`
+
+    const params = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: token
+        }
+    }
+
+    console.log(token)
+    console.log(url)
+    console.log(params)
+
+    return fetch(url, params)
+        .then(response => {
+            console.log(response)
+            return response.json()
+        })
+        .then(result => {
+            console.log(result)
+            return result
+        })
+        .catch(err => {
+            console.log(err)
+            return err.message
+        })
+}
