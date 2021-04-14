@@ -61,3 +61,11 @@ En la function EditForm en linea 73, en el return
 Al presionar Edit la información de un Usuario se muestra su información, si se presiona Edit en otro usuario, hay un bug que muestra la misma info del primero presionado
 
 TO DO: Arreglar el bug
+
+*********************************************************************************
+
+En EditUserForm.scss
+En linea 13 y 14
+
+Código comentado por que por alguna omisión el formulario solo centra al Form de Select y no al resto de textos de inputs
+
