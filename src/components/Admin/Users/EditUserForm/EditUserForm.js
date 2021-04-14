@@ -3,6 +3,7 @@ import { Avatar, Form, Input, Select, Button, Row, Col } from "antd";
 import { useDropzone } from "react-dropzone";
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
 import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
+import { getAvatarApi } from "../../../../api/user";
 
 import "./EditUserForm.scss";
 
@@ -17,16 +18,39 @@ export default function EditUserForm(props) {
     console.log(avatar)
 
     const [userData, setUserData] = useState({
-        nombre: user.nombre,
-        apellido: user.apellido,
-        email: user.email,
-        role: user.role,
-        avatar: user.avatar
+        // nombre: user.nombre,
+        // apellido: user.apellido,
+        // email: user.email,
+        // role: user.role,
+        // avatar: user.avatar
     })
 
     useEffect(() => {
+        setUserData({
+            nombre: user.nombre,
+            apellido: user.apellido,
+            email: user.email,
+            role: user.role,
+            avatar: user.avatar
+        })
+    }, [])
+
+    useEffect(() => {
+        if(user.avatar) {
+            console.log(user)
+            console.log(user.avatar)
+            getAvatarApi(user.avatar).then(response => {
+                console.log(response)
+                setAvatar(response)
+            })
+        } else {
+            setAvatar(null)
+        }
+    }, [user])
+
+    useEffect(() => {
         if(avatar) {
-            setUserData({...userData, avatar})
+            setUserData({...userData, avatar: avatar.file})
         }
     }, [avatar])
     
@@ -37,7 +61,7 @@ export default function EditUserForm(props) {
 
     return (
         <div className="edit-user-form">
-            <h1>Forulario de edición de usuario</h1>
+            <h1>Formulario de edición de usuario</h1>
             <UploadAvatar avatar={avatar} setAvatar={setAvatar} />
             <h2>{user.email}</h2>
             <EditForm userData={userData} setUserData={setUserData} updateUser={updateUser} />
@@ -50,6 +74,20 @@ function UploadAvatar(props) {
     const { avatar, setAvatar } = props
 
     console.log(props)
+
+    const [avatarUrl, setAvatarUrl] = useState(null)
+
+    useEffect(() => {
+        if(avatar) {
+            if(avatar.preview) {
+                setAvatarUrl(avatar.preview)
+            } else {
+                setAvatarUrl(avatar)
+            }
+        } else {
+            setAvatarUrl(null)
+        }
+    }, [avatar])
 
     const onDrop = useCallback(
         acceptedFiles => {
@@ -70,7 +108,8 @@ function UploadAvatar(props) {
             {isDragActive ? (
                 <Avatar size={150} src={NoAvatar} />
             ) : (
-                <Avatar size={150} src={avatar ? avatar.preview : NoAvatar} />
+                // {/* <Avatar size={150} src={avatar ? avatar.preview : NoAvatar} /> */}
+                <Avatar size={150} src={avatarUrl ? avatarUrl : NoAvatar} />
             )}
         </div>
     )
@@ -92,7 +131,7 @@ function EditForm(props) {
                         <Input 
                             prefix={<UserOutlined />}
                             placeholder="Nombre"
-                            defaultValue={userData.nombre}
+                            value={userData.nombre}
                             onChange={e => setUserData({...userData, nombre: e.target.value})}
                         />
                     </Form.Item>
@@ -102,7 +141,7 @@ function EditForm(props) {
                         <Input 
                             prefix={<UserOutlined />}
                             placeholder="Apellido"
-                            defaultValue={userData.apellido}
+                            value={userData.apellido}
                             onChange={e => setUserData({...userData, apellido: e.target.value})}
                         />
                     </Form.Item>
@@ -114,7 +153,7 @@ function EditForm(props) {
                         <Input 
                             prefix={<MailOutlined />}
                             placeholder="Correo electronico"
-                            defaultValue={userData.email}
+                            value={userData.email}
                             onChange={e => setUserData({...userData, email: e.target.value})}
                         />
                     </Form.Item>
@@ -124,7 +163,7 @@ function EditForm(props) {
                         <Select
                             placeholder="Selecciona un rol"
                             onChange={e => setUserData({...userData, role: e})}
-                            defaultValue={userData.role}
+                            value={userData.role}
                         >
                             <Option value="admin">Administrador</Option>
                             <Option value="editor">Editor</Option>
