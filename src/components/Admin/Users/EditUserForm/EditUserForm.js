@@ -223,7 +223,7 @@ function EditForm(props) {
                         >
                             <Option value="admin">Administrador</Option>
                             <Option value="editor">Editor</Option>
-                            <Option value="reviewr">Revisor</Option>
+                            <Option value="reviwer">Revisor</Option>
                         </Select>
                     </Form.Item>
                 </Col>
