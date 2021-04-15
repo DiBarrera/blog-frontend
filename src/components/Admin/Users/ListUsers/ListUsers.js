@@ -44,7 +44,7 @@ export default function ListUsers(props) {
                     setReloadUsers={setReloadUsers}
                 />
             ) : (
-                <UsersInactive usersInactive={usersInactive} />
+                <UsersInactive usersInactive={usersInactive} setReloadUsers={setReloadUsers} />
             )}
             <Modal
                 title={modalTitle}
@@ -184,7 +184,7 @@ function UserActive(props) {
 
 function UsersInactive(props) {
 
-    const { usersInactive } = props
+    const { usersInactive, setReloadUsers } = props
 
     console.log(usersInactive)
     console.log(props)
@@ -195,14 +195,14 @@ function UsersInactive(props) {
             className="users-active"
             itemLayout="horizontal"
             dataSource={usersInactive}
-            renderItem={user => <UserInactive user={user} />}
+            renderItem={user => <UserInactive user={user} setReloadUsers={setReloadUsers} />}
         />
     )
 }
 
 function UserInactive(props) {
 
-    const { user } = props
+    const { user, setReloadUsers } = props
 
     console.log(props)
 
@@ -221,12 +221,32 @@ function UserInactive(props) {
         }
     }, [user])
 
+    const activateUser = () => {
+        
+        const accessToken = getAccessTokenApi()
+
+        activateUserApi(accessToken, user._id, true)
+            .then(response => {
+                console.log(response)
+                notification["success"]({
+                    message: response
+                })
+                setReloadUsers(true)
+            })
+            .catch(err => {
+                console.log(err)
+                notification["error"]({
+                    message: err
+            })
+        })
+    }
+
     return (
         <List.Item
             actions={[
                 <Button
                     type="primary"
-                    onClick={() => console.log("Activar Usuario")}
+                    onClick={activateUser}
                 >
                     <CheckOutlined />
                 </Button>,
