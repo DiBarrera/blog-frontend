@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { Avatar, Form, Input, Select, Button, Row, Col } from "antd";
+import { Avatar, Form, Input, Select, Button, Row, Col, notification } from "antd";
 import { useDropzone } from "react-dropzone";
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
 import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
-import { getAvatarApi } from "../../../../api/user";
+import { getAvatarApi, uploadAvatarApi, updateUserApi } from "../../../../api/user";
+import { getAccessTokenApi } from "../../../../api/auth";
 
 import "./EditUserForm.scss";
 
@@ -55,8 +56,45 @@ export default function EditUserForm(props) {
     }, [avatar])
     
     const updateUser = e => {
+
         // e.preventDefault()
         console.log(userData)
+
+        const token = getAccessTokenApi()
+        console.log(token)
+
+        let userUpdate = userData
+        console.log(userUpdate)
+
+        if(userUpdate.password || userUpdate.repeatPassword) {
+            if(userUpdate.password !== userUpdate.repeatPassword) {
+                notification["error"]({message: "Las contraseñas tienen que ser iguales"})
+            }
+
+            return
+        }
+
+        if(!userUpdate.nombre || !userUpdate.apellido || userUpdate.email) {
+            notification["error"]({message: "El nombre, apellidos y email son obligatorios"})
+
+            return
+        }
+
+        if(typeof userData.avatar === "object") {
+            uploadAvatarApi(token, userUpdate.avatar, user._id).then(response => {
+                console.log(response)
+                userUpdate.avatar = response.avatarName
+                updateUserApi(token, userUpdate, user._id).then(result => {
+                    console.log(result)
+                    notification["success"]({message: result.message})
+                })
+            })
+        } else {
+            updateUserApi(token, userUpdate, user._id).then(result => {
+                console.log(result)
+                notification["success"]({message: result.message})
+            })
+        }
     }
 
     return (
