@@ -153,7 +153,26 @@ function UserActive(props) {
 
         confirm({
             title: "Eliminando Usuario",
-            content: `¿Estas seguro de querer eliminar a ${user.email} de forma permanente?`
+            content: `¿Estas seguro de querer eliminar a ${user.email} de forma permanente?`,
+            onText: "Eliminar",
+            onType: "danger",
+            cancelText: "Cancelar",
+            onOk() {
+                deleteUserApi(accessToken, user._id)
+                    .then(response => {
+                        console.log(response)
+                        notification["success"]({
+                            message: response
+                        })
+                        setReloadUsers(true)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                        notification["error"]({
+                            message: err
+                        })
+                    })
+            }
         })
     }
 
@@ -174,7 +193,7 @@ function UserActive(props) {
                 </Button>,
                 <Button
                     type="danger"
-                    onClick={() => console.log("Eliminar Usuario")}
+                    onClick={showDeleteConfirm}
                 >
                     <DeleteOutlined />
                 </Button>
