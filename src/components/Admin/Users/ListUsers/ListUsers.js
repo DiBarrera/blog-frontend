@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Switch, List, Avatar, Button } from "antd";
+import { Switch, List, Avatar, Button, notification } from "antd";
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
 import { EditOutlined, StopOutlined, DeleteOutlined, CheckOutlined } from "@ant-design/icons";
 import Modal from "../../../Modal";
 import EditUserForm from "../EditUserForm";
-import { getAvatarApi } from "../../../../api/user";
+import { getAvatarApi, activateUserApi } from "../../../../api/user";
+import { getAccessTokenApi } from "../../../../api/auth";
 
 import "./ListUsers.scss";
 
@@ -118,6 +119,25 @@ function UserActive(props) {
         }
     }, [user])
 
+    const desactivateUser = () => {
+
+        const accessToken = getAccessTokenApi()
+
+        activateUserApi(accessToken, user._id, false)
+            .then(response => {
+                console.log(response)
+                notification["success"]({
+                    message: response
+            })
+        })
+        .catch(err => {
+            console.log(err)
+            notification["error"]({
+                message: err
+            })
+        })
+    }
+
     return (
         <List.Item
             actions={[
@@ -129,7 +149,7 @@ function UserActive(props) {
                 </Button>,
                 <Button
                     type="danger"
-                    onClick={() => console.log("Desactivar Usuario")}
+                    onClick={desactivateUser}
                 >
                     <StopOutlined />
                 </Button>,

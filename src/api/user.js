@@ -239,3 +239,33 @@ export function updateUserApi(token, user, userId) {
             return err.message
         })
 }
+
+export function activateUserApi(token, userId, status) {
+
+    const url = `${basePath}/${apiVersion}/activate-user/${userId}`
+
+    const params = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: token
+        },
+        body: JSON.stringify({
+            active: status
+        })
+    }
+
+    return fetch(url, params)
+        .then(response => {
+            console.log(response)
+            return response.json()
+        })
+        .then(result => {
+            console.log(result)
+            return result.message
+        })
+        .catch(err => {
+            console.log(err)
+            return err.message
+        })
+}
