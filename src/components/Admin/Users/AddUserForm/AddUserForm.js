@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Select, Button, Row, Col, Notification } from "antd";
+import { Form, Input, Select, Button, Row, Col, notification } from "antd";
 import { signUpAdminApi } from "../../../../api/user";
 import { getAccessTokenApi } from "../../../../api/auth";
 import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
@@ -16,6 +16,42 @@ export default function EditUserForm(props) {
         // event.preventDefault()
 
         console.log("Creando usuarios con el formulario")
+
+        if(
+            !userData.nombre ||
+            !userData.apellido ||
+            !userData.role ||
+            !userData.email ||
+            !userData.password ||
+            !userData.repeatPassword
+        ) {
+            notification["error"]({
+                message: "Todos los campos son obligatorios"
+            })
+        } else if(userData.password !== userData.repeatPassword) {
+            notification["error"]({
+                message: "Las contraseñas tienen que ser iguales"
+            })
+        } else {
+            const accessToken = getAccessTokenApi()
+
+            signUpAdminApi(accessToken, userData)
+                .then(response => {
+                    console.log(response)
+                    notification["success"]({
+                        message: response
+                    })
+                    setIsVisibleModal(false)
+                    setReloadUsers(true)
+                    setUserData({})
+                })
+                .catch(err => {
+                    console.log(err)
+                    notification["error"]({
+                        message: err
+                    })
+                })
+        }
     }
 
     return (
