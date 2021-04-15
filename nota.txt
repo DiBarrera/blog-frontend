@@ -69,3 +69,8 @@ En linea 13 y 14
 
 Código comentado por que por alguna omisión el formulario solo centra al Form de Select y no al resto de textos de inputs
 
+*********************************************************************************
+
+En EditUserForm linea 96 y 107, él setIsVisibleModal(false) no cumple su función de quitar el modal después de actualizar datos, se comentan ambas lineas.
+
+En EditUserForm linea 112, el setReloadUsers(true) no cumple su función de actualizar la lista despues de actualizar datos, se comenta.

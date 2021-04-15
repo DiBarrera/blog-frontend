@@ -10,7 +10,7 @@ import "./ListUsers.scss";
 
 export default function ListUsers(props) {
 
-    const { usersActive, usersInactive } = props
+    const { usersActive, usersInactive, setReloadUsers } = props
 
     console.log(props)
     console.log(usersActive)
@@ -39,7 +39,8 @@ export default function ListUsers(props) {
                     usersActive={usersActive} 
                     setIsVisibleModal={setIsVisibleModal} 
                     setModalTitle={setModalTitle}
-                    setModalContent={setModalContent} 
+                    setModalContent={setModalContent}
+                    setReloadUsers={setReloadUsers}
                 />
             ) : (
                 <UsersInactive usersInactive={usersInactive} />
@@ -62,7 +63,8 @@ function UsersActive(props) {
         usersActive,
         setIsVisibleModal,
         setModalTitle,
-        setModalContent
+        setModalContent,
+        setReloadUsers
     } = props
 
     console.log(usersActive)
@@ -75,7 +77,13 @@ function UsersActive(props) {
                 `Editar usuario ${user.nombre ? user.nombre : "..."} 
                 ${user.apellido ? user.apellido : "..."}`
             )
-        setModalContent(<EditUserForm user={user}/>)
+        setModalContent(
+                <EditUserForm 
+                    user={user} 
+                    setIsVisibleModal={setIsVisibleModal} 
+                    setReloadUsers={setReloadUsers} 
+                />
+            )
     }
 
     return (

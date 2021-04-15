@@ -216,7 +216,8 @@ export function updateUserApi(token, user, userId) {
     const params = {
         method: "PUT",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            Authorization: token
         },
         body: JSON.stringify(user)
     }
@@ -224,14 +225,17 @@ export function updateUserApi(token, user, userId) {
     return fetch(url, params)
         .then(response => {
             console.log(response)
+            console.log(`Este es el response ---> ${response}`)
             return response.json()
         })
         .then(result => {
             console.log(result)
+            console.log(`Este es el result ---> ${result}`)
             return result
         })
         .catch(err => {
             console.log(err)
+            console.log(`Este es el err ---> ${err}`)
             return err.message
         })
 }

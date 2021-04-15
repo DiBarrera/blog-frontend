@@ -10,7 +10,7 @@ import "./EditUserForm.scss";
 
 export default function EditUserForm(props) {
 
-    const { user } = props
+    const { user, setIsVisibleModal, setReloadUsers } = props
 
     console.log(props)
 
@@ -68,14 +68,18 @@ export default function EditUserForm(props) {
 
         if(userUpdate.password || userUpdate.repeatPassword) {
             if(userUpdate.password !== userUpdate.repeatPassword) {
-                notification["error"]({message: "Las contraseñas tienen que ser iguales"})
+                notification["error"]({
+                    message: "Las contraseñas tienen que ser iguales"
+                })
             }
 
             return
         }
 
-        if(!userUpdate.nombre || !userUpdate.apellido || userUpdate.email) {
-            notification["error"]({message: "El nombre, apellidos y email son obligatorios"})
+        if(!userUpdate.nombre || !userUpdate.apellido || !userUpdate.email) {
+            notification["error"]({
+                message: "El nombre, apellidos y email son obligatorios"
+            })
 
             return
         }
@@ -86,15 +90,26 @@ export default function EditUserForm(props) {
                 userUpdate.avatar = response.avatarName
                 updateUserApi(token, userUpdate, user._id).then(result => {
                     console.log(result)
-                    notification["success"]({message: result.message})
+                    notification["success"]({
+                        message: result.message
+                    })
+                    // setIsVisibleModal(false)
+                    setReloadUsers(true)
                 })
             })
         } else {
             updateUserApi(token, userUpdate, user._id).then(result => {
+                console.log("Autho update")
                 console.log(result)
-                notification["success"]({message: result.message})
+                notification["success"]({
+                    message: result.message
+                })
+                // setIsVisibleModal(false)
+                setReloadUsers(true)
             })
         }
+        setIsVisibleModal(false)
+        // setReloadUsers(true)
     }
 
     return (

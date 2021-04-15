@@ -10,6 +10,7 @@ export default function Users() {
     const [usersActive, setUsersActive ] = useState([])
     const [usersInactive, setUsersInactive] = useState([])
     const token = getAccessTokenApi()
+    const [reloadUsers, setReloadUsers] = useState(false)
 
     console.log("usersActive ", usersActive)
     console.log("usersInactive ", usersInactive)
@@ -25,12 +26,17 @@ export default function Users() {
             console.log(response.users)
             setUsersInactive(response.users)
         })
-    }, [token])
+        setReloadUsers(false)
+    }, [token, reloadUsers])
 
     return (
         <div className="users">
             <h1>Lista de Usuarios</h1>
-            <ListUsers usersActive={usersActive} usersInactive={usersInactive} />
+            <ListUsers 
+                usersActive={usersActive} 
+                usersInactive={usersInactive} 
+                setReloadUsers={setReloadUsers} 
+            />
         </div>
     )
 }
