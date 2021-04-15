@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Switch, List, Avatar, Button, notification } from "antd";
+import { Switch, List, Avatar, Button, notification, Modal as ModalAntd } from "antd";
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
 import { EditOutlined, StopOutlined, DeleteOutlined, CheckOutlined } from "@ant-design/icons";
 import Modal from "../../../Modal";
 import EditUserForm from "../EditUserForm";
-import { getAvatarApi, activateUserApi } from "../../../../api/user";
+import { getAvatarApi, activateUserApi, deleteUserApi } from "../../../../api/user";
 import { getAccessTokenApi } from "../../../../api/auth";
 
 import "./ListUsers.scss";
+
+const { confirm } = ModalAntd
 
 export default function ListUsers(props) {
 
@@ -142,6 +144,16 @@ function UserActive(props) {
             notification["error"]({
                 message: err
             })
+        })
+    }
+
+    const showDeleteConfirm = () => {
+
+        const accessToken = getAccessTokenApi()
+
+        confirm({
+            title: "Eliminando Usuario",
+            content: `¿Estas seguro de querer eliminar a ${user.email} de forma permanente?`
         })
     }
 
