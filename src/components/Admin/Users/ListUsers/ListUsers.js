@@ -93,14 +93,20 @@ function UsersActive(props) {
             className="users-active"
             itemLayout="horizontal"
             dataSource={usersActive}
-            renderItem={user => <UserActive user={user} editUser={editUser} />}
+            renderItem={user => (
+                <UserActive 
+                    user={user} 
+                    editUser={editUser} 
+                    setReloadUsers={setReloadUsers} 
+                />
+            )}
         />
     )
 }
 
 function UserActive(props) {
 
-    const { user, editUser } = props
+    const { user, editUser, setReloadUsers } = props
 
     console.log(props)
 
@@ -129,6 +135,7 @@ function UserActive(props) {
                 notification["success"]({
                     message: response
             })
+            setReloadUsers(true)
         })
         .catch(err => {
             console.log(err)
