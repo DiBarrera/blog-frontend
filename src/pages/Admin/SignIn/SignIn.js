@@ -1,11 +1,11 @@
 import React from "react";
 import { Layout, Tabs } from "antd";
 import {
-    Switch,
-    Route,
-    Link,
+    // Switch,
+    // Route,
+    // Link,
     Redirect,
-    BrowserRouter as Router
+    // BrowserRouter as Router
   } from "react-router-dom";
   import Logo from "../../../assets/img/png/logo-personal.png";
   import RegisterForm from "../../../components/Admin/RegisterForm";

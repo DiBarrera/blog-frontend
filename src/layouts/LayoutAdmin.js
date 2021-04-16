@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import {
     Switch,
     Route,
-    Link,
+    // Link,
     Redirect,
-    BrowserRouter as Router
+    // BrowserRouter as Router
   } from "react-router-dom";
 import { Layout } from "antd";
 import MenuTop from "../components/Admin/MenuTop";
@@ -14,7 +14,7 @@ import { getAccessTokenApi, getRefreshTokenApi } from "../api/auth"
 import useAuth from "../hooks/useAuth";
 
 import "./LayoutAdmin.scss"
-import routes from "../config/routes";
+// import routes from "../config/routes";
 
 export default function LayoutAdmin(props) {
 

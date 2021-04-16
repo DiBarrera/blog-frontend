@@ -1,16 +1,16 @@
 import React from "react";
-import Admin from "./pages/Admin";
-import SignIn from "./pages/Admin/SignIn";
-import Home from "./pages/Home";
-import Contact from "./pages/Contact";
+// import Admin from "./pages/Admin";
+// import SignIn from "./pages/Admin/SignIn";
+// import Home from "./pages/Home";
+// import Contact from "./pages/Contact";
 import {
   Switch,
   Route,
-  Link,
+  // Link,
   BrowserRouter as Router
 } from "react-router-dom";
 import routes from "./config/routes";
-import AdminHome from "./pages/Admin";
+// import AdminHome from "./pages/Admin";
 import AuthProvider from "./providers/AuthProvider";
 
 import "./App.scss";

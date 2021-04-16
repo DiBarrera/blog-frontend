@@ -71,9 +71,9 @@ export function refreshAccessTokenApi(refreshToken) {
                 console.log(result.accessToken)
                 console.log(result.refreshTken)
                 console.log(ACCESS_TOKEN)
-                console.log(accessToken)
+                // console.log(accessToken)
                 console.log(REFRESH_TOKEN)
-                console.log(refreshTken)
+                // console.log(refreshTken)
                 const { accessToken, refreshTken } = result
                 localStorage.setItem(ACCESS_TOKEN, accessToken)
                 localStorage.setItem(REFRESH_TOKEN, refreshTken)

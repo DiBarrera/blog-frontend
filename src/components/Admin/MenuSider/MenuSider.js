@@ -1,13 +1,13 @@
 import React from "react";
 import {
-    Switch,
-    Route,
+    // Switch,
+    // Route,
     Link,
     withRouter,
-    BrowserRouter as Router
+    // BrowserRouter as Router
   } from "react-router-dom";
 import { Layout, Menu } from "antd";
-import { HomeOutlined, MenuOutlined, UserOutlined } from "@ant-design/icons";
+import { HomeOutlined, /*MenuOutlined,*/ UserOutlined } from "@ant-design/icons";
 
 import "./MenuSider.scss";
 
