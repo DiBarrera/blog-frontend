@@ -34,7 +34,7 @@ export default function EditUserForm(props) {
             role: user.role,
             avatar: user.avatar
         })
-    }, [])
+    }, [user])
 
     useEffect(() => {
         if(user.avatar) {
@@ -53,6 +53,7 @@ export default function EditUserForm(props) {
         if(avatar) {
             setUserData({...userData, avatar: avatar.file})
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [avatar])
     
     const updateUser = e => {
