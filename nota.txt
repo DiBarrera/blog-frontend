@@ -110,3 +110,12 @@ La solución puede traer otro tipo de problemas así que a considerar si usar el
 Warning: Can't perform a React state update on an unmounted component. 
 This is a no-op, but it indicates a memory leak in your application. 
 To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
+
+*********************************************************************************
+
+Warning: A string ref, "List2", has been found within a strict mode tree.
+String refs are a source of potential bugs and should be avoided.
+We recommend using useRef() or createRef() instead.
+Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref
+
+Considerar usar otro paquete
