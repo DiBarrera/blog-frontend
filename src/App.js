@@ -7,8 +7,8 @@ import {
   Switch,
   Route,
   // Link,
-  // BrowserRouter as Router
-  HashRouter as Router
+  BrowserRouter as Router
+  // HashRouter as Router
 } from "react-router-dom";
 import routes from "./config/routes";
 // import AdminHome from "./pages/Admin";
