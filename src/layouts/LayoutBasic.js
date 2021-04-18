@@ -5,7 +5,8 @@ import {
     // Link,
     // BrowserRouter as Router
   } from "react-router-dom";
-import { Layout } from "antd";
+import { Layout, Row, Col } from "antd";
+import MenuTop from "../components/Web/MenuTop";
 
 import "./LayoutBasic.scss";
 
@@ -17,22 +18,52 @@ export default function LayoutBasic(props) {
 
     console.log(routes)
 
-    const { Content, Footer } = Layout
+    const { /*Content,*/ Footer } = Layout
 
     return (
-        <Layout>
-            <h2>Menu Sider Basic</h2>
-            <Layout>
-                <Content>
-                        <div>Content Abajo esta el Sistema de rutas Basic</div>
-                        <LoadRoutes routes={routes} />
-                </Content>
-                <Footer>
-                    <h5>Footer Basic</h5>
-                </Footer>
-            </Layout>
-        </Layout>
+        // <Row>
+        //     <Layout>
+        //         <h2>Menu Sider Basic</h2>
+        //         <Layout>
+                        <Row>
+                            {/* <Layout>
+                                <Content> */}
+                                    <Col md={4} />
+                                    <Col md={16}>
+                                        {/* <Content> */}
+                                            <p>MenuTop</p>
+                                            <div>Abajo esta MenuTop</div>
+                                            <MenuTop />
+                                            <div>Content Abajo esta el Sistema de rutas Basic</div>
+                                            <LoadRoutes routes={routes} />
+                                            <Footer>
+                                                <h5>Footer Basic</h5>
+                                            </Footer>
+                                        {/* </Content> */}
+                                    </Col>
+                                    <Col md={4} />
+                                {/* </Content>
+                            </Layout> */}
+                        </Row>
+        //         </Layout>
+        //     </Layout>
+        // </Row>
     )
+
+    // return (
+    //     <Layout>
+    //         <h2>Menu Sider Basic</h2>
+    //         <Layout>
+    //             <Content>
+    //                     <div>Content Abajo esta el Sistema de rutas Basic</div>
+    //                     <LoadRoutes routes={routes} />
+    //             </Content>
+    //             <Footer>
+    //                 <h5>Footer Basic</h5>
+    //             </Footer>
+    //         </Layout>
+    //     </Layout>
+    // )
 }
 
 function LoadRoutes({ routes }) {

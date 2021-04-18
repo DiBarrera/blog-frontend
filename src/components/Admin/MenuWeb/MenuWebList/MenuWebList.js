@@ -41,6 +41,7 @@ export default function MenuWebList(props) {
             })
         })
         setListItems(listItemsArray)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [menu])
 
     const activateMenu = (menu, status) => {
