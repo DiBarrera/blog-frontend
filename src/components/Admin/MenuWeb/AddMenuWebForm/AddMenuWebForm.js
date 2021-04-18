@@ -1,27 +1,77 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Select, notification } from "antd";
 import { FontSizeOutlined } from "@ant-design/icons";
+import { addMenuApi } from "../../../../api/menu";
+import { getAccessTokenApi } from "../../../../api/auth";
 
 import "./AddMenuWebForm.scss";
 
 export default function AddMenuWebForm(props) {
 
+    const { setIsVisibleModal, setReloadMenuWeb } = props
+    const [menuWebData, setMenuWebData] = useState({})
+
+    const addMenu = event => {
+        // event.preventDefault()
+        console.log("Creando Menú . . .")
+        console.log(menuWebData)
+
+        let finalData = {
+            title: menuWebData.title,
+            url: (menuWebData.http ? menuWebData.http : "http://") + menuWebData.url
+        }
+
+        console.log(finalData)
+        if(!finalData.title || !finalData.url || !menuWebData.url) {
+            notification["error"]({
+                message: "Todos los campos son obligatorios"
+            })
+        } else {
+            const accessToken = getAccessTokenApi()
+            finalData.active = false
+            finalData.order = 1000
+
+            addMenuApi(accessToken, finalData)
+                .then(response => {
+                    console.log(response)
+                    notification["success"]({
+                        message: response
+                    })
+                    setIsVisibleModal(false)
+                    setReloadMenuWeb(true)
+                    setMenuWebData({})
+                    finalData = {}
+                })
+                .catch(() => {
+                    notification["error"]({
+                        message: "Error en el servidor"
+                    })
+                })
+        }
+    }
+
     return (
         <div className="add-menu-web-form">
             <h2>AddMenuWebForm Component</h2>
-            <AddForm />
+            <AddForm 
+                menuWebData={menuWebData}
+                setMenuWebData={setMenuWebData}
+                addMenu={addMenu}
+            />
         </div>
     )
 }
 
 function AddForm(props) {
 
+    const { menuWebData, setMenuWebData, addMenu } = props
+
     const { Option } = Select
     const selectBefore = (
         <Select
             defaultValue="http://"
             style={{width: 90}}
-            // onChange={}
+            onChange={e => setMenuWebData({...menuWebData, http:e})}
         >
             <Option value="http://">http://</Option>
             <Option value="https://">https://</Option>
@@ -29,19 +79,21 @@ function AddForm(props) {
     )
 
     return (
-        <Form className="form-add">
+        <Form className="form-add" onFinish={addMenu}>
             <Form.Item>
                 <Input 
                     prefix={<FontSizeOutlined />}
                     placeholder="Titulo"
-                    // value={}
-                    // onChange={}
+                    value={menuWebData.title}
+                    onChange={e => setMenuWebData({...menuWebData, title: e.target.value})}
                 />
             </Form.Item>
             <Form.Item>
                 <Input 
                     addonBefore={selectBefore}
                     placeholder="URL"
+                    value={menuWebData.url}
+                    onChange={e => setMenuWebData({...menuWebData, url: e.target.value})}
                 />
             </Form.Item>
             <Form.Item>
