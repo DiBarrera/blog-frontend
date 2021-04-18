@@ -6,6 +6,7 @@ import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { updateMenuApi, activateMenuApi } from "../../../../api/menu";
 import { getAccessTokenApi } from "../../../../api/auth";
 import AddMenuWebForm from "../AddMenuWebForm";
+import EditMenuWebForm from "../EditMenuWebForm";
 
 import "./MenuWebList.scss";
 
@@ -30,7 +31,11 @@ export default function MenuWebList(props) {
                     // <div>
                     //     <p>{item.title}</p>
                     // </div>
-                    <MenuItem item={item} activateMenu={activateMenu} />
+                    <MenuItem 
+                        item={item}
+                        activateMenu={activateMenu}
+                        editMenuWebModal={editMenuWebModal}
+                    />
                 )
             })
         })
@@ -78,6 +83,19 @@ export default function MenuWebList(props) {
         )
     }
 
+    const editMenuWebModal = menu => {
+
+        setIsVisibleModal(true)
+        setModalTitle(`Editando menu: ${menu.title}`)
+        setModalContent(
+            <EditMenuWebForm 
+                setIsVisibleModal={setIsVisibleModal}
+                setReloadMenuWeb={setReloadMenuWeb}
+                menu={menu}
+            />
+        )
+    }
+
     console.log(menu)
 
     return (
@@ -107,7 +125,7 @@ export default function MenuWebList(props) {
 
 function MenuItem(props) {
 
-    const { item, activateMenu } = props
+    const { item, activateMenu, editMenuWebModal } = props
 
     return (
         <List.Item
@@ -116,7 +134,7 @@ function MenuItem(props) {
                     defaultChecked={item.active}
                     onChange={e => activateMenu(item, e)}
                 />,
-                <Button type="primary">
+                <Button type="primary" onClick={() => editMenuWebModal(item)}>
                     <EditOutlined />
                 </Button>,
                 <Button type="danger">
