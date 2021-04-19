@@ -20,7 +20,7 @@ export default function TopicsOfInterest() {
             </Col>
             <Col lg={4} />
             <Col lg={16}>
-                <Row className="row-topics-of-interes">
+                <Row className="row-topics-of-interest">
                     <Col md={6}>
                         Topic 1...
                         <CardTopics 
@@ -58,7 +58,7 @@ export default function TopicsOfInterest() {
                         />
                     </Col>
                 </Row>
-                <Row className="row-topics-of-interes">
+                <Row className="row-topics-of-interest">
                     <Col md={6}>
                         <CardTopics 
                             image={nutritionHealth5}
@@ -80,6 +80,13 @@ export default function TopicsOfInterest() {
                 </Row>
             </Col>
             <Col lg={4} />
+            <Col lg={24} className="topics-of-interest__more">
+                <Link to="/topics">
+                    <Button>
+                        Ver más Topics
+                    </Button>
+                </Link>
+            </Col>
         </Row>
     )
 }
