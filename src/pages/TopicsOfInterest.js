@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function () {
+export default function TopicsOfInterest() {
     return (
         <div>
-            <h1>Topics of Interest</h1>
+            <h1>Topics of Interest . . .</h1>
         </div>
     )
 }
