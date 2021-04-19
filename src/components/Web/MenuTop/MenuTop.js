@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu } from "antd";
 import { Link } from "react-router-dom";
+import logoWhite from "../../../assets/img/png/logo-personal.png";
 
 import "./MenuTop.scss";
 
@@ -9,7 +10,9 @@ export default function MenuTop() {
     return (
         <Menu className="menu-top-web" mode="horizontal">
             <Menu.Item className="menu-top-web__logo">
-                Logo...
+                <Link to={"/"}>
+                    <img src={logoWhite} alt="Logo" />
+                </Link>
             </Menu.Item>
             <Menu.Item className="menu-top-web__item">
                 <Link to={"/"}>
