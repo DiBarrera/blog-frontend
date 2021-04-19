@@ -3,6 +3,7 @@ import { Menu } from "antd";
 import { Link } from "react-router-dom";
 import logoWhite from "../../../assets/img/png/logo-personal.png";
 import { getMenuApi } from "../../../api/menu";
+import SocialLinks from "../SocialLinks";
 
 import "./MenuTop.scss";
 
@@ -68,9 +69,10 @@ export default function MenuTop() {
                     Contacto...
                 </Link>
             </Menu.Item> */}
-            <div>
+            <SocialLinks />
+            {/* <div>
                 Social Media...
-            </div>
+            </div> */}
         </Menu>
     )
 

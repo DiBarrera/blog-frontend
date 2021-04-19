@@ -136,3 +136,9 @@ remove it from the DOM element.
 
 En cuanto el MenúTop, considerar y buscar la forma de quitar el simbolo de "..."
 que guarda los Menús creados en un dropMenú, esto forma parte de la libreria de antd
+
+*********************************************************************************
+
+Desaparecen los dos errores anteriores
+
+TO DO: Ajustar el Footer a lo ancho del TopMenu
