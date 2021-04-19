@@ -1,0 +1,17 @@
+@import "../../../scss/index.scss";
+
+.topics-of-interest {
+    margin-top: 50x;
+    margin-bottom: 50x;
+
+    &__title {
+        text-align: center;
+
+        h2 {
+            color: $font-light;
+            font-weight: bold;
+            font-size: 32px;
+            text-transform: uppercase;
+        }
+    }
+}

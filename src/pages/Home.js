@@ -1,5 +1,6 @@
 import React from "react";
 import MainBanner from "../components/Web/MainBanner";
+import TopicsOfInterest from "../components/Web/TopicsOfInterest";
 
 export default function Home() {
     return (
@@ -9,6 +10,7 @@ export default function Home() {
                 <h2>Y abajo esta el MainBanner</h2>
             </div>
             <MainBanner />
+            <TopicsOfInterest />
         </>
     )
 }
