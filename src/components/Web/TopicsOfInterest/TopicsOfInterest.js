@@ -19,10 +19,86 @@ export default function TopicsOfInterest() {
                 <h2>Topics of Interest</h2>
             </Col>
             <Col lg={4} />
-            <Col lg={6}>
-                
+            <Col lg={16}>
+                <Row className="row-topics-of-interes">
+                    <Col md={6}>
+                        Topic 1...
+                        <CardTopics 
+                            image={nutritionHealth1}
+                            title="Nutrition Health 1"
+                            subtitle="info about nutrition and health 1"
+                            link="http://localhost:3000/#"
+                        />
+                    </Col>
+                    <Col md={6}>
+                        Topic 2...
+                        <CardTopics 
+                            image={nutritionHealth2}
+                            title="Nutrition Health 2"
+                            subtitle="info about nutrition and health 2"
+                            link="http://localhost:3000/#"
+                        />
+                    </Col>
+                    <Col md={6}>
+                        Topic 3...
+                        <CardTopics 
+                            image={nutritionHealth3}
+                            title="Nutrition Health 3"
+                            subtitle="info about nutrition and health 3"
+                            link="http://localhost:3000/#"
+                        />
+                    </Col>
+                    <Col md={6}>
+                        Topic 4...
+                        <CardTopics 
+                            image={nutritionHealth4}
+                            title="Nutrition Health 4"
+                            subtitle="info about nutrition and health 4"
+                            link="http://localhost:3000/#"
+                        />
+                    </Col>
+                </Row>
+                <Row className="row-topics-of-interes">
+                    <Col md={6}>
+                        <CardTopics 
+                            image={nutritionHealth5}
+                            title="Nutrition Health 5"
+                            subtitle="Info about nutrition and health 5"
+                            link="http://localhost:3000/#"
+                        />
+                    </Col>
+                    <Col md={6} />
+                    <Col md={6} />
+                    <Col md={6}>
+                        <CardTopics 
+                            image={nutritionHealth6}
+                            title="Nutrition Health 6"
+                            subtitle="Info about nutrition and health 6"
+                            link="http://localhost:3000/#"
+                        />
+                    </Col>
+                </Row>
             </Col>
             <Col lg={4} />
         </Row>
+    )
+}
+
+function CardTopics(props) {
+
+    const { image, title, subtitle, link } = props
+    const { Meta } = Card
+
+    return (
+        <a href={link} target="_blank" rel="noopener noreferrer">
+            <Card
+                className="topics-of-interest__card"
+                cover={<img src={image} alt={title} />}
+                actions={[<Button>Saber más</Button>]}
+            >
+                CardTopics . . .
+                <Meta title={title} description={subtitle} />
+            </Card>
+        </a>
     )
 }
