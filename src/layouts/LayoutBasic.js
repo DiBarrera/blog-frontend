@@ -25,30 +25,66 @@ export default function LayoutBasic(props) {
         //     <Layout>
         //         <h2>Menu Sider Basic</h2>
         //         <Layout>
-                        <Row>
-                            {/* <Layout>
-                                <Content> */}
-                                    <Col md={4} />
-                                    <Col md={16}>
-                                        {/* <Content> */}
-                                            <p>MenuTop</p>
-                                            <div>Abajo esta MenuTop</div>
-                                            <MenuTop />
-                                            <div>Content Abajo esta el Sistema de rutas Basic</div>
-                                            <LoadRoutes routes={routes} />
-                                            <Footer>
-                                                <h5>Footer Basic</h5>
-                                            </Footer>
-                                        {/* </Content> */}
-                                    </Col>
-                                    <Col md={4} />
-                                {/* </Content>
-                            </Layout> */}
-                        </Row>
+                        <>
+                            <Row>
+                                {/* <Layout>
+                                    <Content> */}
+                                        <Col md={4} />
+                                        <Col md={16}>
+                                            {/* <Content> */}
+                                                <p>MenuTop</p>
+                                                <div>Abajo esta MenuTop</div>
+                                                <MenuTop />
+                                                <div>Content Abajo esta el Sistema de rutas Basic</div>
+                                                {/* <LoadRoutes routes={routes} />
+                                                <Footer>
+                                                    <h5>Footer Basic</h5>
+                                                </Footer> */}
+                                            {/* </Content> */}
+                                        </Col>
+                                        <Col md={4} />
+                                    {/* </Content>
+                                </Layout> */}
+                            </Row>
+                            <LoadRoutes routes={routes} />
+                            <Footer>
+                                <h5>Footer Basic</h5>
+                            </Footer>
+                        </>
         //         </Layout>
         //     </Layout>
         // </Row>
     )
+
+    // return (
+    //     // <Row>
+    //     //     <Layout>
+    //     //         <h2>Menu Sider Basic</h2>
+    //     //         <Layout>
+    //                     <Row>
+    //                         {/* <Layout>
+    //                             <Content> */}
+    //                                 <Col md={4} />
+    //                                 <Col md={16}>
+    //                                     {/* <Content> */}
+    //                                         <p>MenuTop</p>
+    //                                         <div>Abajo esta MenuTop</div>
+    //                                         <MenuTop />
+    //                                         <div>Content Abajo esta el Sistema de rutas Basic</div>
+    //                                         <LoadRoutes routes={routes} />
+    //                                         <Footer>
+    //                                             <h5>Footer Basic</h5>
+    //                                         </Footer>
+    //                                     {/* </Content> */}
+    //                                 </Col>
+    //                                 <Col md={4} />
+    //                             {/* </Content>
+    //                         </Layout> */}
+    //                     </Row>
+    //     //         </Layout>
+    //     //     </Layout>
+    //     // </Row>
+    // )
 
     // return (
     //     <Layout>
