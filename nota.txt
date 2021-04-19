@@ -119,3 +119,20 @@ We recommend using useRef() or createRef() instead.
 Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref
 
 Considerar usar otro paquete
+
+*********************************************************************************
+
+En el archivo /components/Web/MenuTop/MenuTop.js 
+la linea 47 y 56 produce dos errores:
+
+1. Warning: Each child in a list should have a unique "key" prop.
+Check the render method of `DOMWrap`. It was passed a child from MenuTop. 
+See https://reactjs.org/link/warning-keys for more information.
+
+2. Warning: React does not recognize the `eventKey` prop on a DOM element. 
+If you intentionally want it to appear in the DOM as a custom attribute, 
+spell it as lowercase `eventkey` instead. If you accidentally passed it from a parent component, 
+remove it from the DOM element.
+
+En cuanto el MenúTop, considerar y buscar la forma de quitar el simbolo de "..."
+que guarda los Menús creados en un dropMenú, esto forma parte de la libreria de antd
