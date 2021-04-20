@@ -149,7 +149,7 @@ TO DO: Investigar como centrar el Botón de "Ver más" en el Home,
 los archivos a revisar o tratar son:
 TopicsOfInteres.js y TopicsOfInteres.scss
 
-
+*********************************************************************************
 
 TO DO: Vaciar con información acerca del Blog, 
 Arreglar el Icono de cada Card para centrarlo arriba de cada About
