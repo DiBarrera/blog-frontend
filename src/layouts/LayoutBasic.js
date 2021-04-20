@@ -5,8 +5,9 @@ import {
     // Link,
     // BrowserRouter as Router
   } from "react-router-dom";
-import { Layout, Row, Col } from "antd";
+import { /* Layout, */ Row, Col } from "antd";
 import MenuTop from "../components/Web/MenuTop";
+import Footer from "../components/Web/Footer";
 
 import "./LayoutBasic.scss";
 
@@ -18,7 +19,7 @@ export default function LayoutBasic(props) {
 
     console.log(routes)
 
-    const { /*Content,*/ Footer } = Layout
+    // const { /*Content,*/ Footer } = Layout
 
     return (
         // <Row>
@@ -47,9 +48,10 @@ export default function LayoutBasic(props) {
                                 </Layout> */}
                             </Row>
                             <LoadRoutes routes={routes} />
-                            <Footer>
+                            {/* <Footer>
                                 <h5>Footer Basic</h5>
-                            </Footer>
+                            </Footer> */}
+                            <Footer />
                         </>
         //         </Layout>
         //     </Layout>
