@@ -1,5 +1,13 @@
 import React from "react";
-import { Row, Col, Card, Icon } from "antd";
+import { Row, Col, Card } from "antd";
+import { 
+    ExclamationCircleOutlined,
+    ClockCircleOutlined,
+    FileOutlined,
+    UsergroupAddOutlined,
+    DollarOutlined,
+    CheckCircleOutlined
+} from "@ant-design/icons";
 
 import "./About.scss";
 
@@ -18,6 +26,57 @@ export default function About() {
                 <Row className="row-cards">
                     <Col md={8}>
                         Card . . .
+                        <CardInfo 
+                            avatar={<ExclamationCircleOutlined />}
+                            title="About 1"
+                            description="Enim eu turpis egestas pretium aenean pharetra magna ac. 
+                            Id eu nisl nunc mi ipsum faucibus vitae aliquet nec."
+                        />
+                    </Col>
+                    <Col md={8}>
+                        Card . . .
+                        <CardInfo 
+                            avatar={<ClockCircleOutlined />}
+                            title="About 2"
+                            description="Enim eu turpis egestas pretium aenean pharetra magna ac. 
+                            Id eu nisl nunc mi ipsum faucibus vitae aliquet nec."
+                        />
+                    </Col>
+                    <Col md={8}>
+                        Card . . .
+                        <CardInfo 
+                            avatar={<FileOutlined />}
+                            title="About 3"
+                            description="Enim eu turpis egestas pretium aenean pharetra magna ac. 
+                            Id eu nisl nunc mi ipsum faucibus vitae aliquet nec. "
+                        />
+                    </Col>
+                    <Col md={8}>
+                        Card . . .
+                        <CardInfo 
+                            avatar={<UsergroupAddOutlined />}
+                            title="About 4"
+                            description="Enim eu turpis egestas pretium aenean pharetra magna ac. 
+                            Id eu nisl nunc mi ipsum faucibus vitae aliquet nec."
+                        />
+                    </Col>
+                    <Col md={8}>
+                        Card . . .
+                        <CardInfo 
+                            avatar={<DollarOutlined />}
+                            title="About 5"
+                            description="Enim eu turpis egestas pretium aenean pharetra magna ac. 
+                            Id eu nisl nunc mi ipsum faucibus vitae aliquet nec."
+                        />
+                    </Col>
+                    <Col md={8}>
+                        Card . . .
+                        <CardInfo 
+                            avatar={<CheckCircleOutlined />}
+                            title="About 6"
+                            description="Enim eu turpis egestas pretium aenean pharetra magna ac. 
+                            Id eu nisl nunc mi ipsum faucibus vitae aliquet nec."
+                        />
                     </Col>
                 </Row>
             </Col>
@@ -28,6 +87,13 @@ export default function About() {
 
 function CardInfo(props) {
 
-    const { icon, title, subtitle } = props
+    const { avatar, title, description } = props
     const { Meta } = Card
+
+    return (
+        <Card className="about__card">
+            <Meta avatar={avatar} />
+            <Meta title={title} description={description} />
+        </Card>
+    )
 }
