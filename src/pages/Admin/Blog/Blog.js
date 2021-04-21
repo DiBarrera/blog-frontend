@@ -5,6 +5,7 @@ import queryString from "query-string";
 import { withRouter } from "react-router-dom";
 import { getPostApi } from "../../../api/post";
 import PostsList from "../../../components/Admin/Blog/PostsList";
+import PaginationComp from "../../../components/PaginationComp";
 
 import "./Blog.scss";
 
@@ -29,7 +30,7 @@ function Blog(props) {
     console.log(posts)
 
     useEffect(() => {
-        getPostApi(12, page)
+        getPostApi(10, page)
             .then(response => {
                 console.log(response)
                 if(response?.code !== 200) {
@@ -66,6 +67,11 @@ function Blog(props) {
             <PostsList posts={posts} />
 
             <h2>Paginación.........</h2>
+            <PaginationComp 
+                posts={posts}
+                location={location}
+                history={history}
+            />
 
             <Modal 
                 title={modalTitle}
