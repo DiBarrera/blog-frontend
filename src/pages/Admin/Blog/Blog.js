@@ -64,7 +64,7 @@ function Blog(props) {
             </div>
 
             <h1>PostList.........</h1>
-            <PostsList posts={posts} />
+            <PostsList posts={posts} setReloadPosts={setReloadPosts} />
 
             <h2>Paginación.........</h2>
             <PaginationComp 
