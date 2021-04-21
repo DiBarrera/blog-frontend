@@ -4,6 +4,7 @@ import Modal from "../../../components/Modal";
 import queryString from "query-string";
 import { withRouter } from "react-router-dom";
 import { getPostApi } from "../../../api/post";
+import PostsList from "../../../components/Admin/Blog/PostsList";
 
 import "./Blog.scss";
 
@@ -48,6 +49,10 @@ function Blog(props) {
             setReloadPosts(false)
     }, [page, reloadPosts])
 
+    if(!posts) {
+        return null
+    }
+
     return (
         <div className="blog">
             <h1>Blog . . .</h1>
@@ -58,6 +63,8 @@ function Blog(props) {
             </div>
 
             <h1>PostList.........</h1>
+            <PostsList posts={posts} />
+
             <h2>Paginación.........</h2>
 
             <Modal 
