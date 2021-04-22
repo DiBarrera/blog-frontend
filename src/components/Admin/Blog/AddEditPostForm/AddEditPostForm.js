@@ -4,7 +4,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import moment from "moment";
 import { getAccessTokenApi } from "../../../../api/auth";
 import { FontSizeOutlined, LinkOutlined } from "@ant-design/icons";
-import { addPostApi } from "../../../../api/post";
+import { addPostApi, updatePostApi } from "../../../../api/post";
 
 import "./AddEditPostForm.scss";
 
@@ -38,15 +38,37 @@ export default function AddEditPostForm(props) {
             } else {
                 console.log("Editando post")
                 console.log(postData)
+                updatePost()
             }
         }
     }
 
-    const addPost = data => {
+    const addPost = () => {
 
         const token = getAccessTokenApi()
 
         addPostApi(token, postData)
+            .then(response => {
+                console.log(response)
+                const typeNotification = response.code === 200 ? "success" : "warning"
+                notification[typeNotification]({
+                    message: response.message
+                })
+                setIsVisibleModal(false)
+                setReloadPosts(true)
+                setPostData({})
+            })
+            .catch(() => {
+                notification["error"]({
+                    message: "Error del servidor"
+                })
+            })
+    }
+
+    const updatePost = () => {
+
+        const token = getAccessTokenApi()
+        updatePostApi(token, post._id, postData)
             .then(response => {
                 console.log(response)
                 const typeNotification = response.code === 200 ? "success" : "warning"
