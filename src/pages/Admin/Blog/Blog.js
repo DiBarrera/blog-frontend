@@ -3,7 +3,7 @@ import { Button, notification } from "antd";
 import Modal from "../../../components/Modal";
 import queryString from "query-string";
 import { withRouter } from "react-router-dom";
-import { getPostApi } from "../../../api/post";
+import { getPostsApi } from "../../../api/post";
 import PostsList from "../../../components/Admin/Blog/PostsList";
 import PaginationComp from "../../../components/PaginationComp";
 import AddEditPostForm from "../../../components/Admin/Blog/AddEditPostForm";
@@ -31,7 +31,7 @@ function Blog(props) {
     console.log(posts)
 
     useEffect(() => {
-        getPostApi(10, page)
+        getPostsApi(10, page)
             .then(response => {
                 console.log(response)
                 if(response?.code !== 200) {
