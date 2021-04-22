@@ -2,8 +2,8 @@ import React from "react";
 import {
   Switch,
   Route,
-  BrowserRouter as Router
-  // HashRouter as Router
+  // BrowserRouter as Router
+  HashRouter as Router
 } from "react-router-dom";
 import routes from "./config/routes";
 import AuthProvider from "./providers/AuthProvider";
