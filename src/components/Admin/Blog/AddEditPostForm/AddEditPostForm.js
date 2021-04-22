@@ -4,6 +4,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import moment from "moment";
 import { getAccessTokenApi } from "../../../../api/auth";
 import { FontSizeOutlined, LinkOutlined } from "@ant-design/icons";
+import { addPostApi } from "../../../../api/post";
 
 import "./AddEditPostForm.scss";
 
@@ -20,13 +21,26 @@ export default function AddEditPostForm(props) {
         }
     }, [post])
 
+    const processPost = e => {
+        // e.preventDefault()
+
+        if(!post) {
+            console.log("Creando post")
+            console.log(postData)
+        } else {
+            console.log("Editando post")
+            console.log(postData)
+        }
+    }
+
     return (
         <div className="add-edit-post-form">
             <h1>AddEditPostForm . . .</h1>
             <AddEditForm 
                 postData={postData}
                 setPostData={setPostData}
-                post={post} 
+                post={post}
+                processPost={processPost}
             />
         </div>
     )
@@ -34,28 +48,35 @@ export default function AddEditPostForm(props) {
 
 function AddEditForm(props) {
 
-    const { postData, setPostData, post } = props
+    const { postData, setPostData, post, processPost } = props
 
     return (
         <Form
             className="add-edit-post-form"
             layout="inline"
+            onFinish={processPost}
         >
             <Row gutter={24}>
                 <Col span={8}>
                     <Input 
                         prefix={<FontSizeOutlined />}
                         placeholder="Titulo"
-                        // value={}
-                        // onChange={}
+                        value={postData.title}
+                        onChange={e => setPostData({
+                            ...postData,
+                            title: e.target.value
+                        })}
                     />
                 </Col>
                 <Col span={8}>
                     <Input 
                         prefix={<LinkOutlined />}
                         placeholder="Titulo"
-                        // value={}
-                        // onChange={}
+                        value={postData.url}
+                        onChange={e => setPostData({
+                            ...postData,
+                            url: transformTextToUrl(e.target.value)
+                        })}
                     />
                 </Col>
                 <Col span={8}>
@@ -64,8 +85,12 @@ function AddEditForm(props) {
                         format="DD/MM/YYY HH:mm:ss"
                         placeholder="Fecha de publicación"
                         showTime={{ defaultValue: moment("00:00:00", "HH:mm:ss") }}
-                        // value={}
-                        // onChange={}
+                        value={postData.date && moment(postData.date)}
+                        onChange={(e, value) => 
+                            setPostData({
+                                ...postData,
+                                date: value
+                            })}
                     />
                 </Col>
             </Row>
@@ -101,4 +126,11 @@ function AddEditForm(props) {
 
         </Form>
     )
+}
+
+function transformTextToUrl(text) {
+
+    const url = text.replace(" ", "-")
+
+    return url.toLowerCase()
 }
