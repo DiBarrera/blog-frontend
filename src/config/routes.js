@@ -13,6 +13,7 @@ import AdminBlog from "../pages/Admin/Blog";
 import Home from "../pages/Home";
 import Contact from "../pages/Contact";
 import TopicsOfInterest from "../pages/TopicsOfInterest";
+import Blog from "../pages/Blog";
 
 // // Error 404
 import Error404 from "../pages/Error404";
@@ -71,6 +72,16 @@ const routes = [
             {
                 path: "/topics",
                 component: TopicsOfInterest,
+                exact: true
+            },
+            {
+                path: "/blog",
+                component: Blog,
+                exact: true
+            },
+            {
+                path: "/blog/:url",
+                component: Blog,
                 exact: true
             },
             {
