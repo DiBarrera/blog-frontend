@@ -35,9 +35,54 @@ export default function PostsListWeb(props) {
             })
     }, [page])
 
+    console.log(posts)
+
+    if(!posts) {
+        return (
+            <Spin 
+                tip="Cargando"
+                style={{ width: "100%", padding: "200px 0" }}
+            />
+        )
+    }
+
     return (
-        <div>
+        <div className="posts-list-web">
             <h1>PostsListWeb</h1>
+            <List 
+                dataSource={posts.docs} 
+                renderItem={post => <Post post={post} />}
+            />
+            <PaginationComp 
+                posts={posts}
+                location={location}
+                history={history}
+            />
         </div>
+    )
+}
+
+function Post(props) {
+
+    const { post } = props
+
+    console.log(post)
+
+    const day = moment(post.date).format("DD")
+    const month= moment(post.date).format("MMMM")
+
+    return (
+        <List.Item className="post">
+            <div className="post__date">
+                <span>{day}</span>
+                <span>{month}</span>
+                <Link to={`blog/${post.url}`}>
+                    <List.Item.Meta title={post.title} />
+                </Link>
+            </div>
+            {/* <Link to={post.url}>
+                <List.Item.Meta title={post.title} />
+            </Link> */}
+        </List.Item>
     )
 }

@@ -155,3 +155,9 @@ TO DO: Vaciar con información acerca del Blog,
 Arreglar el Icono de cada Card para centrarlo arriba de cada About
 Los archivos a revisar o tratar son:
 About.js y About.scss
+
+*********************************************************************************
+
+TO DO: mejorar los estilos y apariencia del Blog
+los archivos a revisar o tratar son:
+PostsListWeb.js y PostsListWeb.scss
