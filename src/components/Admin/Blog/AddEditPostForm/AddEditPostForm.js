@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Row, Col, Form, Input, Button, DatePicker, notification } from "antd";
 import { Editor } from "@tinymce/tinymce-react";
 import moment from "moment";
@@ -24,13 +24,44 @@ export default function AddEditPostForm(props) {
     const processPost = e => {
         // e.preventDefault()
 
-        if(!post) {
-            console.log("Creando post")
-            console.log(postData)
+        const { title, url, description, date } = postData
+
+        if(!title || !url || !description || !date) {
+            notification["error"]({
+                message: "Se require todos los campos de titulo, url, fecha y contenido"
+            })
         } else {
-            console.log("Editando post")
-            console.log(postData)
+            if(!post) {
+                console.log("Creando post")
+                console.log(postData)
+                addPost()
+            } else {
+                console.log("Editando post")
+                console.log(postData)
+            }
         }
+    }
+
+    const addPost = data => {
+
+        const token = getAccessTokenApi()
+
+        addPostApi(token, postData)
+            .then(response => {
+                console.log(response)
+                const typeNotification = response.code === 200 ? "success" : "warning"
+                notification[typeNotification]({
+                    message: response.message
+                })
+                setIsVisibleModal(false)
+                setReloadPosts(true)
+                setPostData({})
+            })
+            .catch(() => {
+                notification["error"]({
+                    message: "Error del servidor"
+                })
+            })
     }
 
     return (
@@ -49,6 +80,13 @@ export default function AddEditPostForm(props) {
 function AddEditForm(props) {
 
     const { postData, setPostData, post, processPost } = props
+
+    const editorRef = useRef(null);
+    const log = () => {
+        if (editorRef.current) {
+        console.log(editorRef.current.getContent());
+        }
+    };
 
     return (
         <Form
@@ -71,7 +109,7 @@ function AddEditForm(props) {
                 <Col span={8}>
                     <Input 
                         prefix={<LinkOutlined />}
-                        placeholder="Titulo"
+                        placeholder="URL"
                         value={postData.url}
                         onChange={e => setPostData({
                             ...postData,
@@ -89,7 +127,7 @@ function AddEditForm(props) {
                         onChange={(e, value) => 
                             setPostData({
                                 ...postData,
-                                date: value
+                                date: moment(value, "DD/MM/YYYY HH:mm:ss").toISOString()
                             })}
                     />
                 </Col>
@@ -98,7 +136,8 @@ function AddEditForm(props) {
             <div>
                 <Editor
                     // onInit={(evt, editor) => editorRef.current = editor}
-                    initialValue="<p>This is the initial content of the editor.</p>"
+                    // initialValue="Escribe una publicación"
+                    initialValue={postData.description ? postData.description : ""}
                     init={{
                         height: 500,
                         menubar: true,
@@ -113,9 +152,13 @@ function AddEditForm(props) {
                         'removeformat | help',
                         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
                     }}
+                    onBlur={e => {
+                        setPostData({ ...postData, description: e.target.getContent()})
+                    }}
                 />
                 {/* <button onClick={log}>Log editor content</button> */}
                 <Button
+                    onClick={log}
                     type="primary"
                     htmlType="submit"
                     className="btn-submit"
