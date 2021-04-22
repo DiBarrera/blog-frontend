@@ -1,7 +1,8 @@
 import React from 'react';
 import { Row, Col } from "antd";
-import { useParams, withRouter } from "react-router-dom";
+import { useParams, /* withRouter */ } from "react-router-dom";
 import PostsListWeb from "../components/Web/Blog/PostsListWeb";
+import PostInfo from "../components/Web/Blog/PostInfo";
 
 export default function Blog(props) {
 
@@ -26,7 +27,7 @@ export default function Blog(props) {
                     {url ? <h1> Estamos en un post</h1> : <h1>Estamos en lista de posts</h1>}
                 </div>
                 {url ? (
-                    "PostInfo"
+                    <PostInfo url={url} />
                 ) : (
                     <PostsListWeb location={location} history={history} />
                 )}

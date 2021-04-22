@@ -77,6 +77,7 @@ function Post(props) {
                 <span>{day}</span>
                 <span>{month}</span>
                 <Link to={`blog/${post.url}`}>
+                {/* <Link to={`${post.url}`}> */}
                     <List.Item.Meta title={post.title} />
                 </Link>
             </div>
