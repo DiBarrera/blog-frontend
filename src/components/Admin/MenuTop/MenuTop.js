@@ -8,12 +8,9 @@ import "./MenuTop.scss";
 
 export default function MenuTop(props) {
 
-    console.log(props)
-
     const { menuCollapsed, setMenuCollapsed } = props
 
     const logoutUser = () => {
-        console.log("Desconexionando")
         logout()
         window.location.reload()
     }

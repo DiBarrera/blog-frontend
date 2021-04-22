@@ -2,20 +2,20 @@
 import LayoutAdmin from "../layouts/LayoutAdmin";
 import LayoutBasic from "../layouts/LayoutBasic";
 
-// // Admin Pages
+// Admin Pages
 import AdminHome from "../pages/Admin";
 import AdminSignIn from "../pages/Admin/SignIn";
 import AdminUsers from "../pages/Admin/Users";
 import AdminMenuWeb from "../pages/Admin/MenuWeb";
 import AdminBlog from "../pages/Admin/Blog";
 
-// // Pages
+// Pages
 import Home from "../pages/Home";
 import Contact from "../pages/Contact";
 import TopicsOfInterest from "../pages/TopicsOfInterest";
 import Blog from "../pages/Blog";
 
-// // Error 404
+// Error 404
 import Error404 from "../pages/Error404";
 
 const routes = [

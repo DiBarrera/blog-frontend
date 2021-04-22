@@ -10,36 +10,13 @@ export function signUpApi(data) {
         "Content-Type": "application/json"
       }
     }
-    //     // "Content-Type": "application/json; charset=utf-8",
-    //     // "Access-Control-Allow-Origin: *": "http://localhost:3000/api",
-    //     // "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS": "http://localhost:3000/api",
-    //     // "Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token": "http://localhost:3000/api"
-
-    console.log(data)
-    console.log(fetch)
-    console.log(basePath)
-    console.log(apiVersion)
-    console.log(url)
-    console.log(params)
-
-    const myObjStr = JSON.stringify(data)
-    console.log(myObjStr)
-    console.log(JSON.parse(myObjStr))
 
     return fetch(url, params)
         .then(response => {
-            console.log(data)
-            console.log(fetch)
-            console.log(url)
-            console.log(params)
-            console.log(response)
             return response.json()
         })
         .then(result => {
-            console.log(result)
-            console.log(result.user)
             if (result.user) {
-                console.log(`Usuario creado ---> ${result}`)
                 return { 
                     result,
                     status: 200,
@@ -54,13 +31,12 @@ export function signUpApi(data) {
                 }
         })
         .catch(err => {
-            console.log(err)
-            console.log(err.message)
             return { ok: false, message: err.message };
         });
 }
 
 export function signInApi(data) {
+    
     const url = `${basePath}/${apiVersion}/sign-in`
     const params = {
         method: "POST",
@@ -69,35 +45,15 @@ export function signInApi(data) {
             "Content-Type":"application/json"
         }
     }
-    //         // "Content-Type": "application/json; charset=utf-8",
-    //         // "Access-Control-Allow-Origin: *": "http://localhost:3000/api",
-    //         // "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS": "http://localhost:3000/api",
-    //         // "Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token": "http://localhost:3000/api"
-    console.log(data)
-    console.log(fetch)
-    console.log(basePath)
-    console.log(apiVersion)
-    console.log(url)
-    console.log(params)
-    console.log(data)
 
     return fetch(url, params)
         .then(response => {
-            console.log(data)
-            console.log(fetch)
-            console.log(url)
-            console.log(params)
-            console.log(response)
             return response.json()
         })
         .then(result => {
-            console.log(result)
-            console.log(result.accessToken)
-            console.log(result.refreshToken)
             return result
         })
         .catch(err => {
-            console.log(err)
             return err.message
         })
 }
@@ -114,21 +70,14 @@ export function getUsersApi(token) {
         }
     }
 
-    console.log(token)
-    console.log(url)
-    console.log(params)
-
     return fetch(url, params)
         .then(response => {
-            console.log(response)
             return response.json()
         })
         .then(result => {
-            console.log(result)
             return result
         })
         .catch(err => {
-            console.log(err)
             return err.message
         })
 }
@@ -145,21 +94,14 @@ export function getUsersActiveApi(token, status) {
         }
     }
 
-    console.log(token)
-    console.log(url)
-    console.log(params)
-
     return fetch(url, params)
         .then(response => {
-            console.log(response)
             return response.json()
         })
         .then(result => {
-            console.log(result)
             return result
         })
         .catch(err => {
-            console.log(err)
             return err.message
         })
 }
@@ -181,15 +123,12 @@ export function uploadAvatarApi(token, avatar, userId) {
 
     return fetch(url, params)
         .then(response => {
-            console.log(response)
             return response.json()
         })
         .then (result => {
-            console.log(result)
             return result
         })
         .catch(err => {
-            console.log(err)
             return err.message
         })
 }
@@ -200,11 +139,9 @@ export function getAvatarApi(avatarName) {
 
     return fetch(url)
         .then(response => {
-            console.log(response)
             return response.url
         })
         .catch(err => {
-            console.log(err)
             return err.message
         })
 }
@@ -224,18 +161,12 @@ export function updateUserApi(token, user, userId) {
 
     return fetch(url, params)
         .then(response => {
-            console.log(response)
-            console.log(`Este es el response ---> ${response}`)
             return response.json()
         })
         .then(result => {
-            console.log(result)
-            console.log(`Este es el result ---> ${result}`)
             return result
         })
         .catch(err => {
-            console.log(err)
-            console.log(`Este es el err ---> ${err}`)
             return err.message
         })
 }
@@ -257,15 +188,12 @@ export function activateUserApi(token, userId, status) {
 
     return fetch(url, params)
         .then(response => {
-            console.log(response)
             return response.json()
         })
         .then(result => {
-            console.log(result)
             return result.message
         })
         .catch(err => {
-            console.log(err)
             return err.message
         })
 }
@@ -284,15 +212,12 @@ export function deleteUserApi(token, userId) {
 
     return fetch(url, params)
         .then(response => {
-            console.log(response)
             return response.json()
         })
         .then(result => {
-            console.log(result)
             return result.message
         })
         .catch(err => {
-            console.log(err)
             return err.message
         })
 }
@@ -312,15 +237,12 @@ export function signUpAdminApi(token, data) {
 
     return fetch(url, params)
         .then(response => {
-            console.log(response)
             return response.json()
         })
         .then(result => {
-            console.log(result)
             return result.message
         })
         .catch(err => {
-            console.log(err)
             return err.message
         })
 }

@@ -14,7 +14,7 @@ export default function TopicsOfInterest() {
 
     return (
         <Row className="topics-of-interest">
-            <h1>Topics of Interest</h1>
+
             <Col lg={24} className="topics-of-interest__title">
                 <h2>Topics of Interest</h2>
             </Col>
@@ -22,7 +22,6 @@ export default function TopicsOfInterest() {
             <Col lg={16}>
                 <Row className="row-topics-of-interest">
                     <Col md={6}>
-                        Topic 1...
                         <CardTopics 
                             image={nutritionHealth1}
                             title="Nutrition Health 1"
@@ -31,7 +30,6 @@ export default function TopicsOfInterest() {
                         />
                     </Col>
                     <Col md={6}>
-                        Topic 2...
                         <CardTopics 
                             image={nutritionHealth2}
                             title="Nutrition Health 2"
@@ -40,7 +38,6 @@ export default function TopicsOfInterest() {
                         />
                     </Col>
                     <Col md={6}>
-                        Topic 3...
                         <CardTopics 
                             image={nutritionHealth3}
                             title="Nutrition Health 3"
@@ -49,7 +46,6 @@ export default function TopicsOfInterest() {
                         />
                     </Col>
                     <Col md={6}>
-                        Topic 4...
                         <CardTopics 
                             image={nutritionHealth4}
                             title="Nutrition Health 4"
@@ -103,7 +99,6 @@ function CardTopics(props) {
                 cover={<img src={image} alt={title} />}
                 actions={[<Button>Saber más</Button>]}
             >
-                CardTopics . . .
                 <Meta title={title} description={subtitle} />
             </Card>
         </a>

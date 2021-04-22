@@ -22,7 +22,6 @@ export default function AddEditPostForm(props) {
     }, [post])
 
     const processPost = e => {
-        // e.preventDefault()
 
         const { title, url, description, date } = postData
 
@@ -32,12 +31,8 @@ export default function AddEditPostForm(props) {
             })
         } else {
             if(!post) {
-                console.log("Creando post")
-                console.log(postData)
                 addPost()
             } else {
-                console.log("Editando post")
-                console.log(postData)
                 updatePost()
             }
         }
@@ -49,7 +44,6 @@ export default function AddEditPostForm(props) {
 
         addPostApi(token, postData)
             .then(response => {
-                console.log(response)
                 const typeNotification = response.code === 200 ? "success" : "warning"
                 notification[typeNotification]({
                     message: response.message
@@ -70,7 +64,6 @@ export default function AddEditPostForm(props) {
         const token = getAccessTokenApi()
         updatePostApi(token, post._id, postData)
             .then(response => {
-                console.log(response)
                 const typeNotification = response.code === 200 ? "success" : "warning"
                 notification[typeNotification]({
                     message: response.message
@@ -88,7 +81,7 @@ export default function AddEditPostForm(props) {
 
     return (
         <div className="add-edit-post-form">
-            <h1>AddEditPostForm . . .</h1>
+            <h1>Editar el Post -Y aqui ponemos un llamado diánmico-</h1>
             <AddEditForm 
                 postData={postData}
                 setPostData={setPostData}
@@ -157,8 +150,6 @@ function AddEditForm(props) {
 
             <div>
                 <Editor
-                    // onInit={(evt, editor) => editorRef.current = editor}
-                    // initialValue="Escribe una publicación"
                     initialValue={postData.description ? postData.description : ""}
                     init={{
                         height: 500,

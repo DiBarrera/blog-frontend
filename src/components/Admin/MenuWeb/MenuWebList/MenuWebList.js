@@ -20,17 +20,11 @@ export default function MenuWebList(props) {
     const [modalTitle, setModalTitle] = useState("")
     const [modalContent, setModalContent] = useState(null)
 
-    console.log(listItems)
-
     useEffect(() => {
         const listItemsArray = []
-
         menu.forEach(item => {
             listItemsArray.push({
                 content: (
-                    // <div>
-                    //     <p>{item.title}</p>
-                    // </div>
                     <MenuItem 
                         item={item}
                         activateMenu={activateMenu}
@@ -45,9 +39,6 @@ export default function MenuWebList(props) {
     }, [menu])
 
     const activateMenu = (menu, status) => {
-        
-        console.log(menu)
-        console.log(status)
 
         const accessToken = getAccessTokenApi()
         activateMenuApi(accessToken, menu._id, status)
@@ -60,7 +51,6 @@ export default function MenuWebList(props) {
 
     const onSort = (sortedList, dropEvent) => {
 
-        console.log(sortedList)
         const accessToken = getAccessTokenApi()
 
         sortedList.forEach(item => {
@@ -75,9 +65,6 @@ export default function MenuWebList(props) {
         setIsVisibleModal(true)
         setModalTitle("Creando nuevo menú")
         setModalContent(
-            // <div>
-            //     Creando Menú
-            // </div>
             <AddMenuWebForm 
                 setIsVisibleModal={setIsVisibleModal}
                 setReloadMenuWeb={setReloadMenuWeb}
@@ -86,8 +73,6 @@ export default function MenuWebList(props) {
     }
 
     const deleteMenu = menu => {
-
-        console.log(menu)
 
         const accessToken = getAccessTokenApi()
 
@@ -100,7 +85,6 @@ export default function MenuWebList(props) {
             onOk() {
                 deleteMenuApi(accessToken, menu._id)
                     .then(response => {
-                        console.log(response)
                         notification["success"]({
                             message: response
                         })
@@ -128,14 +112,9 @@ export default function MenuWebList(props) {
         )
     }
 
-    console.log(menu)
-
     return (
         <div>
-            <h1>Menu Web List</h1>
-            {menu.map(item => (
-                <p key={item._id}>{item.title}</p>
-            ))}
+            <h1>Listado de Menús</h1>
             <div className="menu-web-list">
                 <div className="menu-web-list__header">
                     <Button type="primary" onClick={addMenuWebModal}>Crear menú</Button>

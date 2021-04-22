@@ -11,20 +11,8 @@ import "./EditUserForm.scss";
 export default function EditUserForm(props) {
 
     const { user, setIsVisibleModal, setReloadUsers } = props
-
-    console.log(props)
-
     const [avatar, setAvatar] = useState(null)
-
-    console.log(avatar)
-
-    const [userData, setUserData] = useState({
-        // nombre: user.nombre,
-        // apellido: user.apellido,
-        // email: user.email,
-        // role: user.role,
-        // avatar: user.avatar
-    })
+    const [userData, setUserData] = useState({})
 
     useEffect(() => {
         setUserData({
@@ -38,10 +26,7 @@ export default function EditUserForm(props) {
 
     useEffect(() => {
         if(user.avatar) {
-            console.log(user)
-            console.log(user.avatar)
             getAvatarApi(user.avatar).then(response => {
-                console.log(response)
                 setAvatar(response)
             })
         } else {
@@ -58,62 +43,46 @@ export default function EditUserForm(props) {
     
     const updateUser = e => {
 
-        // e.preventDefault()
-        console.log(userData)
-
         const token = getAccessTokenApi()
-        console.log(token)
-
         let userUpdate = userData
-        console.log(userUpdate)
 
         if(userUpdate.password || userUpdate.repeatPassword) {
             if(userUpdate.password !== userUpdate.repeatPassword) {
                 notification["error"]({
                     message: "Las contraseñas tienen que ser iguales"
                 })
-
                 return
             } else {
                 delete userUpdate.repeatPassword
             }
-            console.log(userUpdate)
         }
 
         if(!userUpdate.nombre || !userUpdate.apellido || !userUpdate.email) {
             notification["error"]({
                 message: "El nombre, apellidos y email son obligatorios"
             })
-
             return
         }
 
         if(typeof userData.avatar === "object") {
             uploadAvatarApi(token, userUpdate.avatar, user._id).then(response => {
-                console.log(response)
                 userUpdate.avatar = response.avatarName
                 updateUserApi(token, userUpdate, user._id).then(result => {
-                    console.log(result)
                     notification["success"]({
                         message: result.message
                     })
-                    // setIsVisibleModal(false)
                     setReloadUsers(true)
                 })
             })
         } else {
             updateUserApi(token, userUpdate, user._id).then(result => {
-                console.log("Autho update")
-                console.log(result)
                 notification["success"]({
                     message: result.message
                 })
-                // setIsVisibleModal(false)
                 setReloadUsers(true)
             })
         }
         setIsVisibleModal(false)
-        // setReloadUsers(true)
     }
 
     return (
@@ -129,9 +98,6 @@ export default function EditUserForm(props) {
 function UploadAvatar(props) {
 
     const { avatar, setAvatar } = props
-
-    console.log(props)
-
     const [avatarUrl, setAvatarUrl] = useState(null)
 
     useEffect(() => {
@@ -165,7 +131,6 @@ function UploadAvatar(props) {
             {isDragActive ? (
                 <Avatar size={150} src={NoAvatar} />
             ) : (
-                // {/* <Avatar size={150} src={avatar ? avatar.preview : NoAvatar} /> */}
                 <Avatar size={150} src={avatarUrl ? avatarUrl : NoAvatar} />
             )}
         </div>
@@ -175,9 +140,6 @@ function UploadAvatar(props) {
 function EditForm(props) {
     
     const { userData, setUserData, updateUser } = props
-    
-    console.log(props)
-
     const { Option } = Select
 
     return (

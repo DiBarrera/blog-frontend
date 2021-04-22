@@ -7,9 +7,7 @@ export default function MainBanner() {
 
     return (
         <div className="main-banner">
-            <h1>MainBanner . . .</h1>
             <div className="main-banner__dark" />
-
             <Row>
                 <Col lg={4} />
                 <Col lg={16}>

@@ -15,8 +15,6 @@ export default function PostsListWeb(props) {
     const [posts, setPosts] = useState(null)
     const { page = 1 } = queryString.parse(location.search)
 
-    console.log(page)
-
     useEffect(() => {
         getPostsApi(10, page)
             .then(response => {
@@ -35,8 +33,6 @@ export default function PostsListWeb(props) {
             })
     }, [page])
 
-    console.log(posts)
-
     if(!posts) {
         return (
             <Spin 
@@ -48,7 +44,7 @@ export default function PostsListWeb(props) {
 
     return (
         <div className="posts-list-web">
-            <h1>PostsListWeb</h1>
+            <h1>Listado de Posts</h1>
             <List 
                 dataSource={posts.docs} 
                 renderItem={post => <Post post={post} />}
@@ -65,9 +61,6 @@ export default function PostsListWeb(props) {
 function Post(props) {
 
     const { post } = props
-
-    console.log(post)
-
     const day = moment(post.date).format("DD")
     const month= moment(post.date).format("MMMM")
 
@@ -77,13 +70,9 @@ function Post(props) {
                 <span>{day}</span>
                 <span>{month}</span>
                 <Link to={`blog/${post.url}`}>
-                {/* <Link to={`${post.url}`}> */}
                     <List.Item.Meta title={post.title} />
                 </Link>
             </div>
-            {/* <Link to={post.url}>
-                <List.Item.Meta title={post.title} />
-            </Link> */}
         </List.Item>
     )
 }

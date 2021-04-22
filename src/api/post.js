@@ -6,15 +6,12 @@ export function getPostsApi(limit, page) {
 
     return fetch(url)
         .then(response => {
-            console.log(response)
             return response.json()
         })
         .then(result => {
-            console.log(result)
             return result
         })
         .catch(err => {
-            console.log(err)
             return err
         })
 }
@@ -33,15 +30,12 @@ export function deletePostApi(token, id) {
 
     return fetch(url, params)
         .then(response => {
-            console.log(response)
             return response.json()
         })
         .then(result => {
-            console.log(result)
             return result
         })
         .catch(err => {
-            console.log(err)
             return err
         })
 }
@@ -61,16 +55,12 @@ export function addPostApi(token, post) {
 
     return fetch(url, params)
         .then(response => {
-            console.log(url)
-            console.log(response)
             return response.json()
         })
         .then(result => {
-            console.log(result)
             return result
         })
         .catch(err => {
-            console.log(err)
             return err
         })
 }
@@ -90,15 +80,12 @@ export function updatePostApi(token, id, data) {
 
     return fetch(url, params)
         .then(response => {
-            console.log(response)
             return response.json()
         })
         .then(result => {
-            console.log(result)
             return result
         })
         .catch(err => {
-            console.log(err)
             return err
         })
 }
@@ -109,16 +96,12 @@ export function getPostApi(urlPost) {
 
     return fetch(url)
         .then(response => {
-            console.log(url)
-            console.log(response)
             return response.json()
         })
         .then(result => {
-            console.log(result)
             return result
         })
         .catch(err => {
-            console.log(err)
             return err
         })
 

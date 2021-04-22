@@ -17,15 +17,12 @@ export default function Footer() {
                 <Col md={16}>
                     <Row>
                         <Col md={8}>
-                            Footer Info 1
                             <FooterInfo />
                         </Col>
                         <Col md={8}>
-                            Footer Info 2
                             <NavigationFooter />
                         </Col>
                         <Col md={8}>
-                            Footer Info 3
                             <Newsletter />
                         </Col>
                     </Row>

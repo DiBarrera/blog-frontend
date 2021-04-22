@@ -15,11 +15,6 @@ const { confirm } = ModalAntd
 export default function ListUsers(props) {
 
     const { usersActive, usersInactive, setReloadUsers } = props
-
-    console.log(props)
-    console.log(usersActive)
-    console.log(usersInactive)
-
     const [viewUsersActives, setViewUsersActives] = useState(true)
     const [isVisibleModal, setIsVisibleModal] = useState(false)
     const [modalTitle, setModalTitle] = useState("")
@@ -38,7 +33,6 @@ export default function ListUsers(props) {
 
     return (
         <div className="list-users">
-            <h1>List Users . . .</h1>
             <div className="list-users__header">
                 <div className="list-users__header-switch">
                     <Switch 
@@ -70,7 +64,6 @@ export default function ListUsers(props) {
                 isVisible={isVisibleModal}
                 setIsVisible={setIsVisibleModal}
             >
-                Este es un MODAL
                 {modalContent}
             </Modal>
         </div>
@@ -86,9 +79,6 @@ function UsersActive(props) {
         setModalContent,
         setReloadUsers
     } = props
-
-    console.log(usersActive)
-    console.log(props)
 
     const editUser = user => {
         
@@ -107,7 +97,6 @@ function UsersActive(props) {
     }
 
     return (
-        // <h3>Lista de usuarios Activos</h3>
         <List 
             className="users-active"
             itemLayout="horizontal"
@@ -126,17 +115,11 @@ function UsersActive(props) {
 function UserActive(props) {
 
     const { user, editUser, setReloadUsers } = props
-
-    console.log(props)
-
     const [avatar, setAvatar] = useState(null)
 
     useEffect(() => {
         if(user.avatar) {
-            console.log(user)
-            console.log(user.avatar)
             getAvatarApi(user.avatar).then(response => {
-                console.log(response)
                 setAvatar(response)
             })
         } else {
@@ -150,14 +133,12 @@ function UserActive(props) {
 
         activateUserApi(accessToken, user._id, false)
             .then(response => {
-                console.log(response)
                 notification["success"]({
                     message: response
             })
             setReloadUsers(true)
         })
         .catch(err => {
-            console.log(err)
             notification["error"]({
                 message: err
             })
@@ -177,14 +158,12 @@ function UserActive(props) {
             onOk() {
                 deleteUserApi(accessToken, user._id)
                     .then(response => {
-                        console.log(response)
                         notification["success"]({
                             message: response
                         })
                         setReloadUsers(true)
                     })
                     .catch(err => {
-                        console.log(err)
                         notification["error"]({
                             message: err
                         })
@@ -234,11 +213,7 @@ function UsersInactive(props) {
 
     const { usersInactive, setReloadUsers } = props
 
-    console.log(usersInactive)
-    console.log(props)
-
     return (
-        // <h3>Lista de usuarios Inactivos</h3>
         <List 
             className="users-active"
             itemLayout="horizontal"
@@ -251,17 +226,11 @@ function UsersInactive(props) {
 function UserInactive(props) {
 
     const { user, setReloadUsers } = props
-
-    console.log(props)
-
     const [avatar, setAvatar] = useState(null)
 
     useEffect(() => {
         if(user.avatar) {
-            console.log(user)
-            console.log(user.avatar)
             getAvatarApi(user.avatar).then(response => {
-                console.log(response)
                 setAvatar(response)
             })
         } else {
@@ -275,14 +244,12 @@ function UserInactive(props) {
 
         activateUserApi(accessToken, user._id, true)
             .then(response => {
-                console.log(response)
                 notification["success"]({
                     message: response
                 })
                 setReloadUsers(true)
             })
             .catch(err => {
-                console.log(err)
                 notification["error"]({
                     message: err
             })
@@ -302,14 +269,12 @@ function UserInactive(props) {
             onOk() {
                 deleteUserApi(accessToken, user._id)
                     .then(response => {
-                        console.log(response)
                         notification["success"]({
                             message: response
                         })
                         setReloadUsers(true)
                     })
                     .catch(err => {
-                        console.log(err)
                         notification["error"]({
                             message: err
                         })

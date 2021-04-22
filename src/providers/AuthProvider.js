@@ -11,8 +11,6 @@ export const AuthContext = createContext()
 
 export default function AuthProvider(props) {
 
-    console.log(props)
-
     const { children } = props
     const [user, setUser] = useState({
         user: null,
@@ -30,11 +28,7 @@ export default function AuthProvider(props) {
 
 function checkUserLogin(setUser) {
 
-    console.log("¿Esta el usuario ingresado en todas las direcciones del sitio?")
-
     const accessToken = getAccessTokenApi()
-
-    console.log(`El usuario esta ingresado ---> ${accessToken}`)
 
     if(!accessToken) {
         const refreshToken = getRefreshTokenApi()

@@ -13,10 +13,6 @@ export default function EditUserForm(props) {
 
     const addUser = event => {
 
-        // event.preventDefault()
-
-        console.log("Creando usuarios con el formulario")
-
         if(
             !userData.nombre ||
             !userData.apellido ||
@@ -37,7 +33,6 @@ export default function EditUserForm(props) {
 
             signUpAdminApi(accessToken, userData)
                 .then(response => {
-                    console.log(response)
                     notification["success"]({
                         message: response
                     })
@@ -46,7 +41,6 @@ export default function EditUserForm(props) {
                     setUserData({})
                 })
                 .catch(err => {
-                    console.log(err)
                     notification["error"]({
                         message: err
                     })

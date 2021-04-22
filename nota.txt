@@ -161,3 +161,56 @@ About.js y About.scss
 TO DO: mejorar los estilos y apariencia del Blog
 los archivos a revisar o tratar son:
 PostsListWeb.js y PostsListWeb.scss
+
+*********************************************************************************
+
+Limpieza de Código comentado, console.logs y textos adicionales
+
+TO DO: 
+
+/pages/Admin/Admin.js
+Diseño de la parte Home del Dashboard de Admin
+
+Dashboard de Admin
+Crear un enlace para llevar al Home del front
+
+/pages/Contact.js
+Vaciar de información y diseño
+
+/layouts/LayoutAdmin.js
+Diseño del footer
+
+/pages/Error404.js
+Mejorar diseño
+
+/components/Web/TopicsOfInterst/TopicsOfInterest.js
+Mejorar estilos
+
+/pages/TopicsOfInterst.js
+Dar Estilos y hacer algo similar como con la página de Blog
+para generar Topics
+
+/components/Web/About/About.js
+Mejorar estilos de Cards
+
+/componetns/Web/Newsletter/Newsletter.js
+Investigar funcionalidad para el envio de contenido a correos registrados
+
+En Todo el Sitio en la parte front y en el Dashboard de Admin
+Implementar Diseño Responsivo
+
+En el Dashboard
+Mejorar Estilos y crear algún tipo de instructivo de uso para el Usuario Administrador
+
+/components/Admin/Blog/PostsList/PostsList.scss
+Añadir estilos
+
+/components/Admin/Blog/AddEditPostForm/AddEditPostForm.js
+Agregar contenido dinamico en el formulario para indicarle al Admin que Post esta editando
+
+/pages/Blog.js
+Mejorar Estilos y lista de Posts
+
+/components/Web/Blog/PostsListWeb/PostsListWeb.js
+Mejorar Estilos
+Agregar un Botón que envie directamente al Admin a la sección de Edición del Post Actual

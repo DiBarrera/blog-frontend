@@ -13,11 +13,9 @@ export default function NavigationFooter() {
                 <h3>Navigation Footer Col . . .</h3>
             </Col>
             <Col md={12}>
-                List . . .
                 <RenderListLeft />
             </Col>
             <Col md={12}>
-                List . . .
                 <RenderListRight />
             </Col>
         </Row>

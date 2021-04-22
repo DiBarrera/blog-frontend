@@ -10,16 +10,10 @@ export default function Newsletter() {
     const [email, setEmail] = useState("")
 
     const onSubmit = e => {
-
-        // e.preventDefault()
-        console.log("Newsletter Enviado")
-        console.log(email)
         
         // eslint-disable-next-line
         const emailValid = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
         const resultValidation = emailValid.test(email)
-
-        console.log(resultValidation)
 
         if(!resultValidation) {
             notification["error"]({
@@ -29,12 +23,10 @@ export default function Newsletter() {
             subscribeNewsletterApi(email)
                 .then(response => {
                     if(response.code !== 200) {
-                        console.log("Registro no exitoso")
                         notification["warning"]({
                             message: response.message
                         })
                     } else {
-                        console.log("Registro exitoso")
                         notification["success"]({
                             message: response.message
                         })

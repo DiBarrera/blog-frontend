@@ -16,19 +16,15 @@ export default function EditMenuWebForm(props) {
     }, [menu])
 
     const editMenu = event => {
-        // event.preventDefault()
-        console.log(menuWebData)
 
         if(!menuWebData.title || !menuWebData.url) {
             notification["error"]({
                 message: "Todos los campos son obligatorios"
             })
         } else {
-            console.log("Editando menu")
             const accessToken = getAccessTokenApi()
             updateMenuApi(accessToken, menuWebData._id, menuWebData)
                 .then(response => {
-                    console.log(response)
                     notification["success"]({
                         message: response
                     })
@@ -45,7 +41,6 @@ export default function EditMenuWebForm(props) {
 
     return (
         <div className="edit-menu-web-form">
-            {/* <h1>Editando menu {menu.title}</h1> */}
             <EditForm 
                 menuWebData={menuWebData}
                 setMenuWebData={setMenuWebData}
@@ -58,7 +53,6 @@ export default function EditMenuWebForm(props) {
 function EditForm(props) {
 
     const { menuWebData, setMenuWebData, editMenu } = props
-    console.log(props)
 
     return (
         <Form className="form-edit" onFinish={editMenu}>

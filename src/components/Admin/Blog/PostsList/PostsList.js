@@ -14,7 +14,7 @@ export default function PostsList(props) {
     const { posts, setReloadPosts, editPost } = props
 
     const deletePost = post => {
-        console.log(post)
+
         const accessToken = getAccessTokenApi()
 
         confirm({
@@ -26,7 +26,6 @@ export default function PostsList(props) {
             onOk() {
                 deletePostApi(accessToken, post._id)
                     .then(response => {
-                        console.log(response)
                         const typeNotification = response.code === 200 ? "success" : "warning"
                         notification[typeNotification]({
                             message: response.message
@@ -41,12 +40,10 @@ export default function PostsList(props) {
             }
         })
     }
-    
-    console.log(posts)
 
     return (
         <div className="posts-list">
-            <h1>PostsList . . .</h1>
+            <h1>Listado de Posts</h1>
             <List 
                 dataSource={posts.docs}
                 renderItem={post => <Post 
@@ -66,7 +63,6 @@ function Post(props) {
     return (
         <List.Item
             actions={[
-
                 <Link to={`/blog/${post.url}`} target="_blank">
                     <Button type="primary">
                         <EyeOutlined />

@@ -14,11 +14,6 @@ export default function LoginForm() {
     })
 
     const changeForm = (e) => {
-        console.log(e)
-        console.log(e.target)
-        console.log(e.target.value)
-        console.log(e.target.name)
-        console.log(inputs)
         setInputs({
             ...inputs,
             [e.target.name]: e.target.value
@@ -26,23 +21,16 @@ export default function LoginForm() {
     }
 
     const login = async e => {
-        console.log("Login")
-        console.log(inputs)
-        // e.preventDefault();
 
         signInApi(inputs)
 
         const result = await signInApi(inputs)
 
-        console.log(result)
-
         if(result.message) {
-            console.log(result.message)
             notification["error"]({
                 message: result.message
             })
         } else {
-            console.log(localStorage)
             const { accessToken, refreshToken } = result
             localStorage.setItem(ACCESS_TOKEN, accessToken)
             localStorage.setItem(REFRESH_TOKEN, refreshToken)
@@ -50,8 +38,6 @@ export default function LoginForm() {
             notification["success"]({
                 message: "Login correcto"
             })
-
-            // window.location.href = "/admin"
         }
     }
 

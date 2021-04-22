@@ -1,26 +1,17 @@
 import React from "react";
 import {
-    // Switch,
-    // Route,
     Link,
-    withRouter,
-    // BrowserRouter as Router
+    withRouter
   } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import { HomeOutlined, MenuOutlined, UserOutlined, MessageOutlined } from "@ant-design/icons";
 
 import "./MenuSider.scss";
 
-// export default function MenuSider(props) {
 function MenuSider(props) {
-
-    console.log(props)
 
     const { Sider } = Layout
     const { menuCollapsed, location } = props
-
-    console.log(location)
-    console.log(location.pathname)
 
     return (
         <Sider className="admin-sider" collapsed={menuCollapsed}>

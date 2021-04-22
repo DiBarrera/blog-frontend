@@ -25,7 +25,6 @@ export default function About() {
             <Col lg={16}>
                 <Row className="row-cards">
                     <Col md={8}>
-                        Card . . .
                         <CardInfo 
                             avatar={<ExclamationCircleOutlined />}
                             title="About 1"
@@ -34,7 +33,6 @@ export default function About() {
                         />
                     </Col>
                     <Col md={8}>
-                        Card . . .
                         <CardInfo 
                             avatar={<ClockCircleOutlined />}
                             title="About 2"
@@ -43,7 +41,6 @@ export default function About() {
                         />
                     </Col>
                     <Col md={8}>
-                        Card . . .
                         <CardInfo 
                             avatar={<FileOutlined />}
                             title="About 3"
@@ -52,7 +49,6 @@ export default function About() {
                         />
                     </Col>
                     <Col md={8}>
-                        Card . . .
                         <CardInfo 
                             avatar={<UsergroupAddOutlined />}
                             title="About 4"
@@ -61,7 +57,6 @@ export default function About() {
                         />
                     </Col>
                     <Col md={8}>
-                        Card . . .
                         <CardInfo 
                             avatar={<DollarOutlined />}
                             title="About 5"
@@ -70,7 +65,6 @@ export default function About() {
                         />
                     </Col>
                     <Col md={8}>
-                        Card . . .
                         <CardInfo 
                             avatar={<CheckCircleOutlined />}
                             title="About 6"

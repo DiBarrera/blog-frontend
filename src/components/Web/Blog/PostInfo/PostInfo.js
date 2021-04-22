@@ -11,19 +11,14 @@ export default function PostInfo(props) {
     const { url } = props
     const [postInfo, setPostInfo] = useState(null)
 
-    console.log(postInfo)
-
     useEffect(() => {
         getPostApi(url)
             .then(response => {
-                console.log(response)
                 if(response.code !== 200) {
-                    console.log("El code no es 200")
                     notification["warning"]({
                         message: response.message
                     })
                 } else {
-                    console.log("Consiguiendo Post")
                     setPostInfo(response.post)
                 }
             })
@@ -43,13 +38,8 @@ export default function PostInfo(props) {
         )
     }
 
-    console.log(props)
-
     return (
         <div className="post-info">
-            <div>
-                PostInfo . . .
-            </div>
             <h1 className="post-info__title">{postInfo.title}</h1>
             <div className="post-info__creation-date">
                 {moment(postInfo.date)

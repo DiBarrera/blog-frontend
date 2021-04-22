@@ -11,25 +11,18 @@ export default function MenuTop() {
 
     const [menuData, setMenuData] = useState([])
 
-    console.log(menuData)
-
     useEffect(() => {
         getMenuApi()
             .then(response => {
-                console.log(response)
                 const arrayMenu = []
                 response.menu.forEach(item => {
                     if(item.active) {
-                        console.log("Enviando Menús a TopMenu")
                         arrayMenu.push(item)
                     }
-                    // item.active && arrayMenu.push(item)
                 })
                 setMenuData(arrayMenu)
             })
     }, [])
-
-    console.log(menuData)
 
     return (
         <Menu className="menu-top-web" mode="horizontal">
@@ -59,45 +52,7 @@ export default function MenuTop() {
                     </Menu.Item>
                 )
             })}
-            {/* <Menu.Item className="menu-top-web__item">
-                <Link to={"/"}>
-                    Home...
-                </Link>
-            </Menu.Item>
-            <Menu.Item className="menu-top-web__item">
-                <Link to={"/contact"}>
-                    Contacto...
-                </Link>
-            </Menu.Item> */}
             <SocialLinks />
-            {/* <div>
-                Social Media...
-            </div> */}
         </Menu>
     )
-
-    // return (
-    //     <>
-    //     {/* Quitar los divs fragments <> </> y que el Div padre sea los <Menu></Menu> */}
-    //         <h1>Abajo esta el MenuTop . . .</h1>
-    //         <Menu className="menu-top" mode="horizontal">
-    //             <Menu.Item className="menu-top__logo">
-    //                 Logo...
-    //             </Menu.Item>
-    //             <Menu.Item className="menu-top__item">
-    //                 <Link to={"/"}>
-    //                     Home...
-    //                 </Link>
-    //             </Menu.Item>
-    //             <Menu.Item className="menu-top__item">
-    //                 <Link to={"/contact"}>
-    //                     Contacto...
-    //                 </Link>
-    //             </Menu.Item>
-    //             <div>
-    //                 Social Media...
-    //             </div>
-    //         </Menu>
-    //     </>
-    // )
 }

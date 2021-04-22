@@ -27,11 +27,6 @@ export default function RegisterForm() {
 
     const changeForm = e => {
 
-        console.log(e)
-        console.log(e.target)
-        console.log(e.target.value)
-        console.log(e.target.name)
-
         if(e.target.name === "privacyPolicy") {
             setInputs({
                 ...inputs,
@@ -46,10 +41,6 @@ export default function RegisterForm() {
     }
 
     const inputValidation = datos => {
-
-        console.log("Validando...")
-        console.log(datos)
-        console.log(datos.target)
 
         const { type, name } = datos.target
         if(type === "email") {
@@ -76,11 +67,6 @@ export default function RegisterForm() {
 
     const register = async e => {
 
-        console.log(inputs)
-        // e.preventDefault()
-        console.log(formValid)
-
-        // const { email, password, repeatPassword, privacyPolicy } = formValid
         const nombreVal = inputs.nombre
         const apellidoVal = inputs.apellido
         const emailVal = inputs.email
@@ -89,45 +75,21 @@ export default function RegisterForm() {
         const privacyPolicyVal = inputs.privacyPolicy
 
         if(!nombreVal || !apellidoVal || !emailVal || !passwordVal || !repeatPasswordVal || !privacyPolicyVal) {
-            console.log(notification)
-            console.log(`nombre val: ${nombreVal}`)
-            console.log(`apellido val: ${apellidoVal}`)
-            console.log(`email val: ${emailVal}`)
-            console.log(`password val: ${passwordVal}`)
-            console.log(`repeat password val: ${repeatPasswordVal}`)
-            console.log(`privacy policy val: ${privacyPolicyVal}`)
-
-            console.log("Acontinuacion los campos no llenados")
-            console.log(`nombre no val: ${!nombreVal}`)
-            console.log(`apellido no val: ${!apellidoVal}`)
-            console.log(`email no val: ${!emailVal}`)
-            console.log(`password no val: ${!passwordVal}`)
-            console.log(`repeat password no val: ${!repeatPasswordVal}`)
-            console.log(`privacy policy no val: ${!privacyPolicyVal}`)
             notification["error"]({
                 message: "Todos los campos son obligatorios"
             })
         } else {
             if(passwordVal !== repeatPasswordVal) {
-                console.log(`Las contraseñas no son iguales: ${passwordVal} !=== ${repeatPasswordVal}`)
                 notification["error"]({
                     message: "Las contraseñas tienen que ser iguales"
                 })
             } else {
-                // TO DO: Conectar con el API y registrar el usuario
-                // console.log("Se llenaron todos los campos pero no se creo usuario...")
-                // notification["success"]({
-                //     message: "Cuenta creada"
-                // })
                 const result = await signUpApi(inputs)
-                console.log(result)
                 if(!result.ok) {
                     notification["error"]({
                         message: result.message
                     })
                 } else {
-                    console.log(inputs)
-                    console.log(result)
                     notification["success"]({
                         message: result.message
                     })
@@ -138,6 +100,7 @@ export default function RegisterForm() {
     }
 
     const resetForm = () => {
+        
         const inputs = document.getElementsByTagName("input")
 
         for(let i = 0; i <inputs.length; i++) {

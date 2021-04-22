@@ -12,16 +12,12 @@ export default function AddMenuWebForm(props) {
     const [menuWebData, setMenuWebData] = useState({})
 
     const addMenu = event => {
-        // event.preventDefault()
-        console.log("Creando Menú . . .")
-        console.log(menuWebData)
 
         let finalData = {
             title: menuWebData.title,
             url: (menuWebData.http ? menuWebData.http : "http://") + menuWebData.url
         }
 
-        console.log(finalData)
         if(!finalData.title || !finalData.url || !menuWebData.url) {
             notification["error"]({
                 message: "Todos los campos son obligatorios"
@@ -33,7 +29,6 @@ export default function AddMenuWebForm(props) {
 
             addMenuApi(accessToken, finalData)
                 .then(response => {
-                    console.log(response)
                     notification["success"]({
                         message: response
                     })
@@ -52,7 +47,7 @@ export default function AddMenuWebForm(props) {
 
     return (
         <div className="add-menu-web-form">
-            <h2>AddMenuWebForm Component</h2>
+            <h2>Crea un Título y una URL</h2>
             <AddForm 
                 menuWebData={menuWebData}
                 setMenuWebData={setMenuWebData}

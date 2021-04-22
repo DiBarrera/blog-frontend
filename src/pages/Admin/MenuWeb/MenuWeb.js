@@ -7,11 +7,8 @@ export default function MenuWeb() {
     const [menu, setMenu] = useState([])
     const [reloadMenuWeb, setReloadMenuWeb] = useState(false)
 
-    console.log(menu)
-
     useEffect(() => {
         getMenuApi().then(response => {
-            console.log(response)
             setMenu(response.menu)
         })
         setReloadMenuWeb(false)
@@ -19,7 +16,6 @@ export default function MenuWeb() {
 
     return (
         <div className="menu-web">
-            <h1>Menu Web...</h1>
             <MenuWebList menu={menu} setReloadMenuWeb={setReloadMenuWeb} />
         </div>
     )

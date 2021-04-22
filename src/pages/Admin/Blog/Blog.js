@@ -12,8 +12,6 @@ import "./Blog.scss";
 
 function Blog(props) {
 
-    console.log(props)
-
     const [isVisibleModal, setIsVisibleModal] = useState(false)
     const [modalTitle, setModalTitle] = useState("")
     const [modalContent, setModalContent] = useState(null)
@@ -22,18 +20,9 @@ function Blog(props) {
     const [posts, setPosts] = useState(null)
     const [reloadPosts, setReloadPosts] = useState(false)
 
-    console.log(location)
-    console.log(history)
-    console.log(queryString)
-    console.log(queryString.parse(location.search))
-    console.log(queryString.parse(location.search).page)
-    console.log(page)
-    console.log(posts)
-
     useEffect(() => {
         getPostsApi(10, page)
             .then(response => {
-                console.log(response)
                 if(response?.code !== 200) {
                     notification["warning"]({
                         message: response.message
@@ -43,7 +32,6 @@ function Blog(props) {
                 }
             })
             .catch(() => {
-                console.log("Error")
                 notification["error"]({
                     message: "Error del servidor"
                 })
@@ -81,21 +69,19 @@ function Blog(props) {
 
     return (
         <div className="blog">
-            <h1>Blog . . .</h1>
+            <h1>Panel de administración para el Blog</h1>
             <div className="blog__add-post">
                 <Button type="primary" onClick={addPost}>
                     Nuevo post
                 </Button>
             </div>
 
-            <h1>PostList.........</h1>
             <PostsList 
                 posts={posts} 
                 setReloadPosts={setReloadPosts} 
                 editPost={editPost}
             />
 
-            <h2>Paginación.........</h2>
             <PaginationComp 
                 posts={posts}
                 location={location}

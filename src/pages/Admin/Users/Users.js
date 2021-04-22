@@ -12,18 +12,11 @@ export default function Users() {
     const token = getAccessTokenApi()
     const [reloadUsers, setReloadUsers] = useState(false)
 
-    console.log("usersActive ", usersActive)
-    console.log("usersInactive ", usersInactive)
-
     useEffect(() => {
         getUsersActiveApi(token, true).then(response => {
-            console.log(response)
-            console.log(response.users)
             setUsersActive(response.users)
         })
         getUsersActiveApi(token, false).then(response => {
-            console.log(response)
-            console.log(response.users)
             setUsersInactive(response.users)
         })
         setReloadUsers(false)
